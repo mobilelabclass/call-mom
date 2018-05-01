@@ -3,7 +3,7 @@
 //  HeyMom
 //
 //  Created by Nien Lam on 4/17/18.
-//  Copyright © 2018 Mobile Lab. All rights reserved.
+//  Copyright © 2018 Line Break, LLC. All rights reserved.
 //
 
 import UIKit
@@ -53,16 +53,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
             
         })
     }
-
-    @objc
-    func handleTap(sender: UITapGestureRecognizer) {
-        animationView.play{ (finished) in
-        }
-    }
     
     
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
+
+        if let number = appMgr.telephoneNumber {
+            UIApplication.shared.open(number, options: [:], completionHandler: nil)
+        }
 
         /*
         //creating the notification content

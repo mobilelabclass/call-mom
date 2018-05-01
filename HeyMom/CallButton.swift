@@ -3,7 +3,7 @@
 //  HeyMom
 //
 //  Created by Nien Lam on 4/17/18.
-//  Copyright © 2018 Mobile Lab. All rights reserved.
+//  Copyright © 2018 Line Break, LLC. All rights reserved.
 //
 
 import UIKit
