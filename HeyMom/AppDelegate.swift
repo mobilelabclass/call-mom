@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  CallMom
+//  HeyMom
 //
 //  Created by Nien Lam on 4/17/18.
 //  Copyright © 2018 Mobile Lab. All rights reserved.
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create and setup provider delegate.
         providerDelegate = ProviderDelegate()
         providerDelegate.setupCallObserver()
-
+        
         return true
     }
 }

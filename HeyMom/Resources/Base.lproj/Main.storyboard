@@ -13,12 +13,12 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CallMom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HeyMom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-6k-Sdy" customClass="CallButton" customModule="CallMom" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-6k-Sdy" customClass="CallButton" customModule="HeyMom" customModuleProvider="target">
                                 <rect key="frame" x="147" y="487" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.16078431900000001" green="0.88627451660000001" blue="0.48902348239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -56,6 +56,13 @@
                                     <segue destination="bAI-Ci-CCI" kind="presentation" id="wmj-0F-0KC"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIC-9g-i5h" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
+                                <rect key="frame" x="62" y="164" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="8C6-fj-Q29"/>
+                                    <constraint firstAttribute="height" constant="250" id="tm3-lz-XfI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -64,6 +71,8 @@
                             <constraint firstAttribute="trailing" secondItem="Dby-b6-k5x" secondAttribute="trailing" constant="269" id="7KZ-i2-Von"/>
                             <constraint firstItem="Off-50-jVe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="GbG-cm-Xb3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dtn-6k-Sdy" secondAttribute="bottom" constant="100" id="J9P-b1-sGs"/>
+                            <constraint firstItem="OIC-9g-i5h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wfl-kd-VOX"/>
+                            <constraint firstItem="OIC-9g-i5h" firstAttribute="top" secondItem="VDc-N1-xnk" secondAttribute="bottom" constant="42" id="WjF-gP-Wrn"/>
                             <constraint firstItem="Off-50-jVe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fte-r9-KWo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dby-b6-k5x" secondAttribute="bottom" constant="16" id="ue2-9q-rp2"/>
                             <constraint firstItem="VDc-N1-xnk" firstAttribute="top" secondItem="Off-50-jVe" secondAttribute="bottom" constant="8" id="uif-dv-hQO"/>
@@ -85,7 +94,7 @@
         <!--Settings View Controller-->
         <scene sceneID="gkr-JJ-Q1c">
             <objects>
-                <viewController id="bAI-Ci-CCI" customClass="SettingsViewController" customModule="CallMom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bAI-Ci-CCI" customClass="SettingsViewController" customModule="HeyMom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VCM-tz-iRD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

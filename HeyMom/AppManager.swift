@@ -1,6 +1,6 @@
 //
 //  AppManager.swift
-//  CallMom
+//  HeyMom
 //
 //  Created by Nien Lam on 4/17/18.
 //  Copyright © 2018 Mobile Lab. All rights reserved.

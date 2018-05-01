@@ -1,16 +1,20 @@
 PODS:
+  - DLLocalNotifications (0.06)
   - lottie-ios (2.5.0)
 
 DEPENDENCIES:
+  - DLLocalNotifications
   - lottie-ios
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - DLLocalNotifications
     - lottie-ios
 
 SPEC CHECKSUMS:
+  DLLocalNotifications: 751d53da896bc396bb23d4d3570b7fd3c7654e4e
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
 
-PODFILE CHECKSUM: c95fd083ed0dd76d48b1b49d0ef97ceadf878001
+PODFILE CHECKSUM: 9f71348bd127115670dde1909d73b25923ff3087
 
 COCOAPODS: 1.5.0
