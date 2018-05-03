@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
 
     @IBOutlet weak var callDateLabel: UILabel!
     @IBOutlet weak var callDurationLabel: UILabel!
+    @IBOutlet weak var heartVizView: HeartVizView!
 
     // Track call time.
     var callTime: CFAbsoluteTime!
@@ -25,6 +26,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
 
     var animationView: LOTAnimationView!
 
+    var aToggle = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,7 +57,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         })
     }
     
-    
+    @IBAction func settingsButton(_ sender: UIButton) {
+        aToggle = !aToggle
+        
+        if aToggle {
+            heartVizView.reverseAnimation()
+        } else {
+            heartVizView.lineAnimation()
+        }
+    }
+
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
 

@@ -53,7 +53,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bAI-Ci-CCI" kind="presentation" id="wmj-0F-0KC"/>
+                                    <action selector="settingsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ijC-dX-Fvp"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIC-9g-i5h" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
@@ -85,6 +85,7 @@
                     <connections>
                         <outlet property="callDateLabel" destination="Off-50-jVe" id="3iR-eK-sHz"/>
                         <outlet property="callDurationLabel" destination="VDc-N1-xnk" id="y7z-yj-SdT"/>
+                        <outlet property="heartVizView" destination="OIC-9g-i5h" id="p7g-hk-bY2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
