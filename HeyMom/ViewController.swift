@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 import Lottie
 import DLLocalNotifications
 import UserNotifications
@@ -18,6 +19,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     @IBOutlet weak var callDurationLabel: UILabel!
     @IBOutlet weak var heartVizView: HeartVizView!
 
+    var store = CNContactStore()
+    var contacts: [CNContact] = []
+    
     // Track call time.
     var callTime: CFAbsoluteTime!
     
@@ -55,6 +59,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
             
         })
+
+
+        findContactsWithName(name: "mom")
     }
     
     @IBAction func settingsButton(_ sender: UIButton) {
@@ -103,17 +110,58 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         return DateFormatter.localizedString(from: NSDate() as Date, dateStyle: .medium, timeStyle: .short)
     }
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         //displaying the ios local notification when app is in foreground
         completionHandler([.alert, .badge, .sound])
+    }
+
+
+    func findContactsWithName(name: String) {
+        checkAccessStatus(completionHandler: { (accessGranted) -> Void in
+            if accessGranted {
+                DispatchQueue.main.async {
+                    do {
+                        let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)
+                        let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
+                        self.contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
+                        if let contact = self.contacts.first {
+                            let givenName = contact.givenName
+                            let familyName = contact.familyName
+                            for phoneNumber in contact.phoneNumbers {
+                                let number = phoneNumber.value as CNPhoneNumber
+                                let label = phoneNumber.label
+                                let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label!)
+                                print("\(givenName) - \(familyName) - \(localizedLabel) - \(number.stringValue)")
+                            }
+                        }
+                    }
+                    catch {
+                        print("Unable to refetch the selected contact.")
+                    }
+                }
+            }
+        })
+    }
+    
+    func checkAccessStatus(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        let authorizationStatus = CNContactStore.authorizationStatus(for: CNEntityType.contacts)
+        
+        switch authorizationStatus {
+        case .authorized:
+            completionHandler(true)
+        case .denied, .notDetermined:
+            self.store.requestAccess(for: CNEntityType.contacts, completionHandler: { (access, accessError) -> Void in
+                if access {
+                    completionHandler(access)
+                }
+                else {
+                    print("access denied")
+                }
+            })
+        default:
+            completionHandler(false)
+        }
     }
 
 
