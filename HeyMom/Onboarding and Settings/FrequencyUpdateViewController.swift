@@ -12,13 +12,20 @@ class FrequencyUpdateViewController: UIViewController {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+    @IBOutlet weak var dayCountLabel: UILabel!
+
     var didGoBack: (() -> ())?
     var didGoNext: (() -> ())?
     
     // Set to true if using VC from settings view.
     var isSettingsMode = false;
     
+    var dayCount: Int = 5
+    
+    var daySuffix: String {
+        return (dayCount > 1) ? "days" : "day"
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -35,5 +42,17 @@ class FrequencyUpdateViewController: UIViewController {
 
     @IBAction func handleNextButton(_ sender: UIButton) {
         self.didGoNext?()
+    }
+
+    @IBAction func handleSwipeLeft(_ sender: UISwipeGestureRecognizer) {
+        dayCount = max(1, dayCount - 1)
+        
+        dayCountLabel.text = "\(dayCount) \(daySuffix)"
+    }
+    
+    @IBAction func handleSwipeRight(_ sender: UISwipeGestureRecognizer) {
+        dayCount = min(30, dayCount + 1)
+
+        dayCountLabel.text = "\(dayCount) \(daySuffix)"
     }
 }

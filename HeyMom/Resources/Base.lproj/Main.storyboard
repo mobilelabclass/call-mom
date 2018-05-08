@@ -214,20 +214,20 @@
                                 <rect key="frame" x="37" y="96" width="300" height="476"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-n8-ZNs">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Riposte-Regular" family="Riposte" pointSize="33"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRK-Rb-aa8" userLabel="Underline">
-                                        <rect key="frame" x="0.0" y="43" width="300" height="2"/>
+                                        <rect key="frame" x="0.0" y="44" width="300" height="2"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="7ox-fd-8m0"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjm-MT-3bD">
-                                        <rect key="frame" x="218" y="89" width="82" height="36"/>
+                                        <rect key="frame" x="216" y="90" width="84" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="StP-Ir-bjH"/>
                                         </constraints>
@@ -240,7 +240,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OKX-tJ-Bnh">
-                                        <rect key="frame" x="0.0" y="125" width="300" height="351"/>
+                                        <rect key="frame" x="0.0" y="126" width="300" height="350"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumberTableViewCell" id="H9P-po-ou1" customClass="NumberTableViewCell" customModule="HeyMom" customModuleProvider="target">
@@ -361,32 +361,66 @@
                                     <action selector="handleBackButton:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="2l7-JD-zoc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency Update Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81q-v6-uEB">
-                                <rect key="frame" x="82" y="323" width="211" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81q-v6-uEB">
+                                <rect key="frame" x="41.5" y="279" width="293" height="109.5"/>
+                                <fontDescription key="fontDescription" name="Riposte-Black" family="Riposte" pointSize="91"/>
+                                <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember to call every" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plK-ZS-aHb">
+                                <rect key="frame" x="49" y="250" width="277" height="29"/>
+                                <fontDescription key="fontDescription" name="Riposte-Black" family="Riposte" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left or right to update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Je6-Tn-sQa">
+                                <rect key="frame" x="74" y="559" width="226" height="22"/>
+                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="81q-v6-uEB" firstAttribute="centerY" secondItem="RPC-Ou-8NU" secondAttribute="centerY" id="8KI-VG-FEw"/>
+                            <constraint firstItem="81q-v6-uEB" firstAttribute="top" secondItem="plK-ZS-aHb" secondAttribute="bottom" id="AuN-5c-9FC"/>
+                            <constraint firstItem="81q-v6-uEB" firstAttribute="centerY" secondItem="RPC-Ou-8NU" secondAttribute="centerY" id="Ix2-35-t6W"/>
                             <constraint firstItem="kjg-6Y-c0l" firstAttribute="leading" secondItem="P0w-gt-ktw" secondAttribute="leading" constant="20" id="PS9-Pl-rg9"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="trailing" secondItem="Wau-q3-9hQ" secondAttribute="trailing" constant="20" id="RWw-Gw-QYO"/>
+                            <constraint firstItem="plK-ZS-aHb" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="S1a-bR-UU8"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="bottom" secondItem="kjg-6Y-c0l" secondAttribute="bottom" constant="20" id="WIZ-kr-Mpg"/>
                             <constraint firstItem="Wau-q3-9hQ" firstAttribute="leading" secondItem="kjg-6Y-c0l" secondAttribute="trailing" constant="10" id="cK5-Uy-e1V"/>
+                            <constraint firstItem="Je6-Tn-sQa" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="ewv-Zd-MYT"/>
+                            <constraint firstItem="Wau-q3-9hQ" firstAttribute="top" secondItem="Je6-Tn-sQa" secondAttribute="bottom" constant="22" id="mzx-3L-xC2"/>
+                            <constraint firstItem="81q-v6-uEB" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="vwi-lr-Wif"/>
                             <constraint firstItem="81q-v6-uEB" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="wu4-Hp-UXv"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="bottom" secondItem="Wau-q3-9hQ" secondAttribute="bottom" constant="20" id="xbY-x2-ijF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P0w-gt-ktw"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="SPo-vB-YLs" appends="YES" id="xGt-g1-uFv"/>
+                            <outletCollection property="gestureRecognizers" destination="kxY-2p-PQS" appends="YES" id="v2V-9V-FMg"/>
+                        </connections>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="kjg-6Y-c0l" id="Mgs-b4-HAe"/>
+                        <outlet property="dayCountLabel" destination="81q-v6-uEB" id="JKR-kB-SWE"/>
                         <outlet property="nextButton" destination="Wau-q3-9hQ" id="aI9-Ep-eIp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arj-2s-tCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="SPo-vB-YLs" userLabel="Swipe Left Gesture Recognizer">
+                    <connections>
+                        <action selector="handleSwipeLeft:" destination="8lz-Fo-Xw2" id="Bwb-11-WVD"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="kxY-2p-PQS" userLabel="Swipe Right Gesture Recognizer">
+                    <connections>
+                        <action selector="handleSwipeRight:" destination="8lz-Fo-Xw2" id="ScD-YW-7rG"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2590" y="1187"/>
         </scene>

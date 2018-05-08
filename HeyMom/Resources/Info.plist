@@ -32,16 +32,16 @@
 	<string>Acess to addess book.</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Riposte-Black</string>
-		<string>Riposte-Bold</string>
-		<string>Riposte-ExtraBold</string>
-		<string>Riposte-Heavy</string>
-		<string>Riposte-Lazer</string>
-		<string>Riposte-Light</string>
-		<string>Riposte-Medium</string>
-		<string>Riposte-Regular</string>
-		<string>Riposte-SemiBold</string>
-		<string>Riposte-Thin</string>
+		<string>Riposte-Black.otf</string>
+		<string>Riposte-Bold.otf</string>
+		<string>Riposte-ExtraBold.otf</string>
+		<string>Riposte-Heavy.otf</string>
+		<string>Riposte-Lazer.otf</string>
+		<string>Riposte-Light.otf</string>
+		<string>Riposte-Medium.otf</string>
+		<string>Riposte-Regular.otf</string>
+		<string>Riposte-SemiBold.otf</string>
+		<string>Riposte-Thin.otf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
