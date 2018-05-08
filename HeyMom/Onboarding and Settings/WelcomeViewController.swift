@@ -10,18 +10,14 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
-    var didConfirm: (() -> ())?
+    var didGoNext: (() -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
 
-    @IBAction func handleConfirmButton(_ sender: UIButton) {
-        self.didConfirm?()
+    @IBAction func handleNextButton(_ sender: UIButton) {
+        self.didGoNext?()
     }
-    
-    
-
-
 }

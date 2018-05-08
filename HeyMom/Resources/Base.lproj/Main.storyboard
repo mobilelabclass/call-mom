@@ -6,12 +6,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Riposte-Black.otf">
             <string>Riposte-Black</string>
+        </array>
+        <array key="Riposte-Bold.otf">
+            <string>Riposte-Bold</string>
         </array>
         <array key="Riposte-Light.otf">
             <string>Riposte-Light</string>
@@ -38,34 +42,34 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Called" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Off-50-jVe">
-                                <rect key="frame" x="16" y="56" width="343" height="35"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="29"/>
+                                <rect key="frame" x="16" y="56" width="343" height="40"/>
+                                <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="33"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDc-N1-xnk">
-                                <rect key="frame" x="16" y="99" width="343" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <rect key="frame" x="16" y="104" width="343" height="24"/>
+                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dby-b6-k5x">
                                 <rect key="frame" x="16" y="607" width="90" height="44"/>
-                                <color key="backgroundColor" red="0.87843137250000003" green="0.2274509804" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1o7-QN-Oyu"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="qlr-JV-Noj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
                                 <state key="normal" title="Settings">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="settingsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ijC-dX-Fvp"/>
+                                    <segue destination="GPD-sv-3rF" kind="presentation" id="a92-AB-2U5"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIC-9g-i5h" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
-                                <rect key="frame" x="62" y="164" width="250" height="250"/>
+                                <rect key="frame" x="62" y="170" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="8C6-fj-Q29"/>
                                     <constraint firstAttribute="height" constant="250" id="tm3-lz-XfI"/>
@@ -106,7 +110,7 @@
                 <pageViewController storyboardIdentifier="OnboardingPageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="31I-Gn-kGK" customClass="OnboardingPageViewController" customModule="HeyMom" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdM-nU-IxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="939"/>
+            <point key="canvasLocation" x="98" y="1187"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="yJh-gm-is1">
@@ -129,11 +133,11 @@
                                     <constraint firstAttribute="height" constant="44" id="Czd-hW-rZC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Confirm &gt;">
+                                <state key="normal" title="Next &gt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="handleConfirmButton:" destination="m3J-NV-pjD" eventType="touchUpInside" id="j4s-Eq-R1S"/>
+                                    <action selector="handleNextButton:" destination="m3J-NV-pjD" eventType="touchUpInside" id="PXC-ve-LKA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -150,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fle-AE-uXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-514.39999999999998" y="1674.5127436281859"/>
+            <point key="canvasLocation" x="906" y="1180"/>
         </scene>
         <!--Number Update View Controller-->
         <scene sceneID="GiG-Eq-BJs">
@@ -173,11 +177,11 @@
                                     <constraint firstAttribute="height" constant="44" id="g71-mx-Ek3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Confirm &gt;">
+                                <state key="normal" title="Next &gt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="handleConfirmButton:" destination="5ae-lm-huD" eventType="touchUpInside" id="CPs-sJ-cqI"/>
+                                    <action selector="handleNextButton:" destination="5ae-lm-huD" eventType="touchUpInside" id="9kk-fn-6Tb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOC-rb-dt5">
@@ -188,11 +192,11 @@
                                     <constraint firstAttribute="width" constant="83" id="gok-9M-Sdm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="&lt; Cancel">
+                                <state key="normal" title="&lt; Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="handleCanelButton:" destination="5ae-lm-huD" eventType="touchUpInside" id="Nrq-qR-BsK"/>
+                                    <action selector="handleBackButton:" destination="5ae-lm-huD" eventType="touchUpInside" id="Xmg-Ne-4Qw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -208,10 +212,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="69u-2b-uC2"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="qOC-rb-dt5" id="sLG-U8-VxY"/>
+                        <outlet property="nextButton" destination="aSC-hx-5Qp" id="Q2D-Bb-36y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ww-q8-bfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352.80000000000001" y="1674.5127436281859"/>
+            <point key="canvasLocation" x="1774" y="1180"/>
         </scene>
         <!--Frequency Update View Controller-->
         <scene sceneID="PMI-6K-aH4">
@@ -221,17 +229,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3x8-TW-yht">
-                                <rect key="frame" x="88" y="323" width="199.5" height="20.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency Update Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltK-ZU-Atx">
-                                        <rect key="frame" x="0.0" y="0.0" width="199.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wau-q3-9hQ">
                                 <rect key="frame" x="113" y="603" width="242" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -239,11 +236,11 @@
                                     <constraint firstAttribute="height" constant="44" id="GfK-Ol-dWd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Confirm &gt;">
+                                <state key="normal" title="Next &gt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="handleConfirmButton:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="uYF-uM-s9x"/>
+                                    <action selector="handleNextButton:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="hbe-nL-Bnj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-6Y-c0l">
@@ -254,30 +251,40 @@
                                     <constraint firstAttribute="width" constant="83" id="jGM-fJ-Kas"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="&lt; Cancel">
+                                <state key="normal" title="&lt; Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="handleCancelButton:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="J6k-PO-YHx"/>
+                                    <action selector="handleBackButton:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="2l7-JD-zoc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency Update Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81q-v6-uEB">
+                                <rect key="frame" x="82" y="323" width="211" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3x8-TW-yht" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="3Dz-4z-0kf"/>
+                            <constraint firstItem="81q-v6-uEB" firstAttribute="centerY" secondItem="RPC-Ou-8NU" secondAttribute="centerY" id="8KI-VG-FEw"/>
                             <constraint firstItem="kjg-6Y-c0l" firstAttribute="leading" secondItem="P0w-gt-ktw" secondAttribute="leading" constant="20" id="PS9-Pl-rg9"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="trailing" secondItem="Wau-q3-9hQ" secondAttribute="trailing" constant="20" id="RWw-Gw-QYO"/>
-                            <constraint firstItem="3x8-TW-yht" firstAttribute="centerY" secondItem="RPC-Ou-8NU" secondAttribute="centerY" id="U97-KT-J6Y"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="bottom" secondItem="kjg-6Y-c0l" secondAttribute="bottom" constant="20" id="WIZ-kr-Mpg"/>
                             <constraint firstItem="Wau-q3-9hQ" firstAttribute="leading" secondItem="kjg-6Y-c0l" secondAttribute="trailing" constant="10" id="cK5-Uy-e1V"/>
+                            <constraint firstItem="81q-v6-uEB" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="wu4-Hp-UXv"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="bottom" secondItem="Wau-q3-9hQ" secondAttribute="bottom" constant="20" id="xbY-x2-ijF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P0w-gt-ktw"/>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="kjg-6Y-c0l" id="Mgs-b4-HAe"/>
+                        <outlet property="nextButton" destination="Wau-q3-9hQ" id="aI9-Ep-eIp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arj-2s-tCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1169" y="1681"/>
+            <point key="canvasLocation" x="2590" y="1187"/>
         </scene>
         <!--Finish Setup View Controller-->
         <scene sceneID="nmb-QC-WBX">
@@ -288,8 +295,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish Setup Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2r-Ru-toz">
-                                <rect key="frame" x="111" y="323" width="153" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="67.5" y="319" width="241.5" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Riposte-Black" family="Riposte" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -300,11 +307,11 @@
                                     <constraint firstAttribute="height" constant="44" id="I3q-qU-RXd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Confirm &gt;">
+                                <state key="normal" title="Finish &gt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="handleConfirmButton:" destination="zCh-6u-LfS" eventType="touchUpInside" id="YvK-ul-dYJ"/>
+                                    <action selector="handleFinishButton:" destination="zCh-6u-LfS" eventType="touchUpInside" id="Y0G-xs-4my"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn0-Ke-RBA">
@@ -315,11 +322,11 @@
                                     <constraint firstAttribute="height" constant="44" id="upa-AZ-GH4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="&lt; Cancel">
+                                <state key="normal" title="&lt; Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="handleCancelButton:" destination="zCh-6u-LfS" eventType="touchUpInside" id="X6A-H2-Baa"/>
+                                    <action selector="handleBackButton:" destination="zCh-6u-LfS" eventType="touchUpInside" id="WeM-ex-bLe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -338,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28b-i8-8yg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1873" y="1680"/>
+            <point key="canvasLocation" x="3294" y="1186"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="gkr-JJ-Q1c">
@@ -349,13 +356,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjT-Rw-srp">
-                                <rect key="frame" x="131.5" y="603" width="112" height="44"/>
-                                <color key="backgroundColor" red="0.3803921569" green="0.73333333329999995" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="0Bz-q3-Rmt"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="okr-HQ-Cp4"/>
+                                    <constraint firstAttribute="height" constant="44" id="Eaf-11-rXn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -363,31 +369,80 @@
                                     <action selector="handleDoneButton:" destination="bAI-Ci-CCI" eventType="touchUpInside" id="ZoH-Si-Rfm"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Telephone #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eBA-yj-G24">
-                                <rect key="frame" x="16" y="240" width="343" height="41"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="tel"/>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAw-09-BMr">
+                                <rect key="frame" x="-0.5" y="167" width="375" height="266.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0if-2r-o85">
+                                        <rect key="frame" x="37.5" y="0.0" width="300" height="60"/>
+                                        <color key="backgroundColor" red="0.99215686270000003" green="0.72156862749999995" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="XXA-5L-3YO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="20"/>
+                                        <state key="normal" title="Phone Number"/>
+                                        <connections>
+                                            <segue destination="5ae-lm-huD" kind="show" identifier="NumberUpdateSeque" id="kIE-a0-MjT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2V-Jw-QUW">
+                                        <rect key="frame" x="37.5" y="206" width="300" height="60"/>
+                                        <color key="backgroundColor" red="0.99215686270000003" green="0.72156862749999995" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="4Vh-NG-O6r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="20"/>
+                                        <state key="normal" title="Frequency"/>
+                                        <connections>
+                                            <segue destination="8lz-Fo-Xw2" kind="show" identifier="FrequencyUpdateSeque" id="eR7-lc-YSh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="E2V-Jw-QUW" secondAttribute="bottom" id="01K-7K-sUZ"/>
+                                    <constraint firstItem="E2V-Jw-QUW" firstAttribute="centerX" secondItem="SAw-09-BMr" secondAttribute="centerX" id="9Hi-se-1tK"/>
+                                    <constraint firstItem="0if-2r-o85" firstAttribute="top" secondItem="SAw-09-BMr" secondAttribute="top" id="CMG-b9-HhN"/>
+                                    <constraint firstItem="0if-2r-o85" firstAttribute="width" secondItem="SAw-09-BMr" secondAttribute="width" multiplier="0.8" id="Npu-P4-Xu5"/>
+                                    <constraint firstItem="0if-2r-o85" firstAttribute="centerX" secondItem="SAw-09-BMr" secondAttribute="centerX" id="dwK-bG-crF"/>
+                                    <constraint firstItem="E2V-Jw-QUW" firstAttribute="width" secondItem="SAw-09-BMr" secondAttribute="width" multiplier="0.8" id="iCI-Ux-RxP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="Gex-Ba-Hfs" firstAttribute="bottom" secondItem="QjT-Rw-srp" secondAttribute="bottom" constant="20" id="3Ef-CS-xJR"/>
-                            <constraint firstItem="eBA-yj-G24" firstAttribute="centerX" secondItem="VCM-tz-iRD" secondAttribute="centerX" id="5GF-Lk-0Ji"/>
-                            <constraint firstItem="eBA-yj-G24" firstAttribute="top" secondItem="Gex-Ba-Hfs" secondAttribute="top" constant="220" id="Rpv-sJ-kGn"/>
-                            <constraint firstItem="QjT-Rw-srp" firstAttribute="centerX" secondItem="VCM-tz-iRD" secondAttribute="centerX" id="XGu-7p-gUn"/>
-                            <constraint firstItem="Gex-Ba-Hfs" firstAttribute="trailing" secondItem="eBA-yj-G24" secondAttribute="trailing" constant="16" id="r6e-ka-4qF"/>
-                            <constraint firstItem="eBA-yj-G24" firstAttribute="leading" secondItem="Gex-Ba-Hfs" secondAttribute="leading" constant="16" id="zOU-6F-tJ5"/>
+                            <constraint firstItem="SAw-09-BMr" firstAttribute="height" secondItem="VCM-tz-iRD" secondAttribute="height" multiplier="0.4" id="4ji-uW-D9B"/>
+                            <constraint firstItem="SAw-09-BMr" firstAttribute="centerY" secondItem="VCM-tz-iRD" secondAttribute="centerY" multiplier="0.9" id="C1Y-8P-Ohh"/>
+                            <constraint firstItem="Gex-Ba-Hfs" firstAttribute="bottom" secondItem="QjT-Rw-srp" secondAttribute="bottom" constant="20" id="Jw3-cj-yLp"/>
+                            <constraint firstItem="SAw-09-BMr" firstAttribute="width" secondItem="VCM-tz-iRD" secondAttribute="width" id="QLF-N9-iSG"/>
+                            <constraint firstItem="SAw-09-BMr" firstAttribute="centerX" secondItem="VCM-tz-iRD" secondAttribute="centerX" id="hUC-hF-bF9"/>
+                            <constraint firstItem="QjT-Rw-srp" firstAttribute="leading" secondItem="Gex-Ba-Hfs" secondAttribute="leading" constant="20" id="l5y-3L-gvk"/>
+                            <constraint firstItem="Gex-Ba-Hfs" firstAttribute="trailing" secondItem="QjT-Rw-srp" secondAttribute="trailing" constant="20" id="ndD-zW-YfO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gex-Ba-Hfs"/>
                     </view>
-                    <connections>
-                        <outlet property="numberTextField" destination="eBA-yj-G24" id="Yw1-6v-5OS"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="o1O-vc-Nh1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZr-dp-WXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1986.4000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SHs-Tv-bJJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GPD-sv-3rF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A4h-l5-4hU">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bAI-Ci-CCI" kind="relationship" relationship="rootViewController" id="TJy-sl-Cm2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJe-vg-3e1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1045.5999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

@@ -82,7 +82,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         }
 
     }
-    
+
+    /*
     @IBAction func settingsButton(_ sender: UIButton) {
 //        aToggle = !aToggle
 //
@@ -97,6 +98,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         self.present(cnPicker, animated: true, completion: nil)
     }
 
+ */
+  
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
 

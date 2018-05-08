@@ -10,19 +10,18 @@ import UIKit
 
 class FinishSetupViewController: UIViewController {
 
-    var didConfirm: (() -> ())?
-    var didCancel: (() -> ())?
+    var didGoBack: (() -> ())?
+    var didFinish: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    @IBAction func handleConfirmButton(_ sender: UIButton) {
-        self.didConfirm?()
+
+    @IBAction func handleBackButton(_ sender: UIButton) {
+        self.didGoBack?()
     }
-    
-    @IBAction func handleCancelButton(_ sender: UIButton) {
-        self.didCancel?()
+
+    @IBAction func handleFinishButton(_ sender: UIButton) {
+        self.didFinish?()
     }
-    
 }

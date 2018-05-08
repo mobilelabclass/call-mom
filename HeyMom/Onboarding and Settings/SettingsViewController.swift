@@ -8,9 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var numberTextField: UITextField!
+class SettingsViewController: UIViewController {
 
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
@@ -18,22 +16,23 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        numberTextField.text = appMgr.telephoneNumber?.absoluteString.replacingOccurrences(of: "tel://", with: "")
-        
-        // Required for textfield delegate methods.
-        numberTextField.delegate = self
     }
     
     @IBAction func handleDoneButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
- 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        appMgr.storeTelephoneNumber(textField.text!)
-        
-        // Dismisses keyboard when done is pressed.
-        view.endEditing(true)
-        return false
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "NumberUpdateSeque" {
+            if let destinationVC = segue.destination as? NumberUpdateViewController {
+                destinationVC.isSettingsMode = true
+            }
+        } else if segue.identifier == "FrequencyUpdateSeque" {
+            if let destinationVC = segue.destination as? FrequencyUpdateViewController {
+                destinationVC.isSettingsMode = true
+            }
+        }
     }
     
+
 }

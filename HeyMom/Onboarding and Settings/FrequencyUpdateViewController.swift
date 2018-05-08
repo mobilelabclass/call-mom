@@ -10,19 +10,30 @@ import UIKit
 
 class FrequencyUpdateViewController: UIViewController {
 
-    var didConfirm: (() -> ())?
-    var didCancel: (() -> ())?
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
+    var didGoBack: (() -> ())?
+    var didGoNext: (() -> ())?
+    
+    // Set to true if using VC from settings view.
+    var isSettingsMode = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    @IBAction func handleConfirmButton(_ sender: UIButton) {
-        self.didConfirm?()
-    }
-
-    @IBAction func handleCancelButton(_ sender: UIButton) {
-        self.didCancel?()
-    }
     
+        // Buttons user only for onboarding flow.
+        if isSettingsMode {
+            backButton.isHidden = true
+            nextButton.isHidden = true
+        }
+    }
+
+    @IBAction func handleBackButton(_ sender: UIButton) {
+        self.didGoBack?()
+    }
+
+    @IBAction func handleNextButton(_ sender: UIButton) {
+        self.didGoNext?()
+    }
 }

@@ -24,34 +24,34 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
         let finishSetupVC     = sb.instantiateViewController(withIdentifier: "FinishSetupVC") as! FinishSetupViewController
 
         // Wire up welcome screen.
-        welcomeVC.didConfirm = { [weak self] in
+        welcomeVC.didGoNext = { [weak self] in
             self?.goToNextPage()
         }
 
         // Wire up number update screen.
-        numberUpdateVC.didCancel = { [weak self] in
+        numberUpdateVC.didGoBack = { [weak self] in
             self?.goToPreviousPage()
         }
 
-        numberUpdateVC.didConfirm = { [weak self] in
+        numberUpdateVC.didGoNext = { [weak self] in
             self?.goToNextPage()
         }
 
         // Wire up call frequency update screen.
-        frequencyUpdateVC.didCancel = { [weak self] in
+        frequencyUpdateVC.didGoBack = { [weak self] in
             self?.goToPreviousPage()
         }
 
-        frequencyUpdateVC.didConfirm = { [weak self] in
+        frequencyUpdateVC.didGoNext = { [weak self] in
             self?.goToNextPage()
         }
 
         // Wire up call finish setup screen.
-        finishSetupVC.didCancel = { [weak self] in
+        finishSetupVC.didGoBack = { [weak self] in
             self?.goToPreviousPage()
         }
 
-        finishSetupVC.didConfirm = { [weak self] in
+        finishSetupVC.didFinish = { [weak self] in
             self?.didFinishSetup?()
         }
 
