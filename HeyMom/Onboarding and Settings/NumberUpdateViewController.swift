@@ -7,11 +7,21 @@
 //
 
 import UIKit
+import ContactsUI
 
-class NumberUpdateViewController: UIViewController {
+private let reuseIdentifier = "NumberTableViewCell"
+
+class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var numberTextField: UITextField!
+
+    @IBOutlet weak var tableView: UITableView!
+
+    var tableData = [String]()
 
     var didGoBack: (() -> ())?
     var didGoNext: (() -> ())?
@@ -28,14 +38,26 @@ class NumberUpdateViewController: UIViewController {
             nextButton.isHidden = true
         }
         
+        // Show done button only when keyboard is visible.
+        doneButton.isHidden = true
 
         //        numberTextField.text = appMgr.telephoneNumber?.absoluteString.replacingOccurrences(of: "tel://", with: "")
         //
         //        // Required for textfield delegate methods.
         //        numberTextField.delegate = self
 
+        numberTextField.delegate = self
+    
+//        numberTextField.text = "Phone"
+    
+        let color = UIColor.white.withAlphaComponent(0.35)
+        numberTextField.attributedPlaceholder =
+            NSAttributedString(string: "Mom's Number",
+                               attributes: [NSAttributedStringKey.foregroundColor: color])
+
     }
 
+    
     @IBAction func handleBackButton(_ sender: UIButton) {
         self.didGoBack?()
     }
@@ -44,16 +66,72 @@ class NumberUpdateViewController: UIViewController {
         self.didGoNext?()
     }
     
-    
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        appMgr.storeTelephoneNumber(textField.text!)
-    //
-    //        // Dismisses keyboard when done is pressed.
-    //        view.endEditing(true)
-    //        return false
-    //    }
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        doneButton.isHidden = false
+    }
 
-    
-    
+    @IBAction func handleDoneButton(_ sender: UIButton) {
+        view.endEditing(true)
+        doneButton.isHidden = true
+    }
+
+    @IBAction func handleContactsButton(_ sender: UIButton) {
+        let picker = CNContactPickerViewController()
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
+    }
 }
+
+
+extension NumberUpdateViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+
+        self.tableData.removeAll()
+
+        let givenName = contact.givenName
+        let familyName = contact.familyName
+        for phoneNumber in contact.phoneNumbers {
+            let number = phoneNumber.value as CNPhoneNumber
+            let label = phoneNumber.label
+            let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label!)
+            print("\(givenName) - \(familyName) - \(localizedLabel) - \(number.stringValue)")
+
+            self.tableData.append(number.stringValue)
+            self.tableView.reloadData()
+        }
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        print("Cancel Contact Picker")
+    }
+}
+
+
+
+extension NumberUpdateViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NumberTableViewCell
+        
+        let string = tableData[indexPath.row]
+        
+        cell.numberLabel.text = string
+        
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let string = tableData[indexPath.row]
+        
+        numberTextField.text = string
+    }
+
+}
+

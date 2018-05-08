@@ -11,10 +11,9 @@ import Contacts
 import Lottie
 import DLLocalNotifications
 import UserNotifications
-import ContactsUI
 
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotificationCenterDelegate, CNContactPickerDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotificationCenterDelegate {
 
     @IBOutlet weak var callDateLabel: UILabel!
     @IBOutlet weak var callDurationLabel: UILabel!
@@ -93,9 +92,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
 //            heartVizView.lineAnimation()
 //        }
 
-        let cnPicker = CNContactPickerViewController()
-        cnPicker.delegate = self
-        self.present(cnPicker, animated: true, completion: nil)
     }
 
  */
@@ -189,21 +185,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
             completionHandler(false)
         }
     }
-    
-
-    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        contacts.forEach { contact in
-            for number in contact.phoneNumbers {
-                let phoneNumber = number.value
-                print("number is = \(phoneNumber)")
-            }
-        }
-    }
-
-    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
-        print("Cancel Contact Picker")
-    }
-
 
 }
 
