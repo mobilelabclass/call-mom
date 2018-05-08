@@ -11,9 +11,10 @@ import Contacts
 import Lottie
 import DLLocalNotifications
 import UserNotifications
+import ContactsUI
 
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotificationCenterDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotificationCenterDelegate, CNContactPickerDelegate {
 
     @IBOutlet weak var callDateLabel: UILabel!
     @IBOutlet weak var callDurationLabel: UILabel!
@@ -62,16 +63,38 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
 
 
         findContactsWithName(name: "mom")
+
+
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let onboardingPageVC = sb.instantiateViewController(withIdentifier: "OnboardingPageVC") as! OnboardingPageViewController
+
+        self.view.addSubview(onboardingPageVC.view)
+        self.addChildViewController(onboardingPageVC)
+
+        onboardingPageVC.didFinishSetup = {
+            UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
+                onboardingPageVC.view.frame.origin = CGPoint(x: 0, y: onboardingPageVC.view.bounds.height)
+                onboardingPageVC.view.alpha = 0.25
+            }, completion: { (finished) in
+                onboardingPageVC.view.removeFromSuperview()
+                onboardingPageVC.removeFromParentViewController()
+            })
+        }
+
     }
     
     @IBAction func settingsButton(_ sender: UIButton) {
-        aToggle = !aToggle
-        
-        if aToggle {
-            heartVizView.reverseAnimation()
-        } else {
-            heartVizView.lineAnimation()
-        }
+//        aToggle = !aToggle
+//
+//        if aToggle {
+//            heartVizView.reverseAnimation()
+//        } else {
+//            heartVizView.lineAnimation()
+//        }
+
+        let cnPicker = CNContactPickerViewController()
+        cnPicker.delegate = self
+        self.present(cnPicker, animated: true, completion: nil)
     }
 
     // Make call with button press
@@ -162,6 +185,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         default:
             completionHandler(false)
         }
+    }
+    
+
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        contacts.forEach { contact in
+            for number in contact.phoneNumbers {
+                let phoneNumber = number.value
+                print("number is = \(phoneNumber)")
+            }
+        }
+    }
+
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        print("Cancel Contact Picker")
     }
 
 

@@ -17,6 +17,21 @@
 		6AC61587208658D2009A0900 /* CallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC61586208658D2009A0900 /* CallButton.swift */; };
 		6AC6158920866B45009A0900 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC6158820866B45009A0900 /* SettingsViewController.swift */; };
 		6ACA916D2087EF6500FF655D /* TwitterHeart.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA916C2087EF6500FF655D /* TwitterHeart.json */; };
+		6ACE7E6620A0BEB70012F639 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE7E6520A0BEB70012F639 /* OnboardingPageViewController.swift */; };
+		6ACE7E6820A0C0E10012F639 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE7E6720A0C0E10012F639 /* WelcomeViewController.swift */; };
+		6ACE7E6A20A0C0FD0012F639 /* NumberUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE7E6920A0C0FD0012F639 /* NumberUpdateViewController.swift */; };
+		6ACE7E6C20A0C10B0012F639 /* FrequencyUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE7E6B20A0C10B0012F639 /* FrequencyUpdateViewController.swift */; };
+		6ACE7E6E20A0C1320012F639 /* FinishSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE7E6D20A0C1320012F639 /* FinishSetupViewController.swift */; };
+		6ACE7E7B20A1E7C10012F639 /* Riposte-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7120A1E7C10012F639 /* Riposte-Medium.otf */; };
+		6ACE7E7C20A1E7C10012F639 /* Riposte-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7220A1E7C10012F639 /* Riposte-Black.otf */; };
+		6ACE7E7D20A1E7C10012F639 /* Riposte-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7320A1E7C10012F639 /* Riposte-SemiBold.otf */; };
+		6ACE7E7E20A1E7C10012F639 /* Riposte-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7420A1E7C10012F639 /* Riposte-ExtraBold.otf */; };
+		6ACE7E7F20A1E7C10012F639 /* Riposte-Lazer.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7520A1E7C10012F639 /* Riposte-Lazer.otf */; };
+		6ACE7E8020A1E7C10012F639 /* Riposte-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7620A1E7C10012F639 /* Riposte-Bold.otf */; };
+		6ACE7E8120A1E7C10012F639 /* Riposte-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7720A1E7C10012F639 /* Riposte-Heavy.otf */; };
+		6ACE7E8220A1E7C10012F639 /* Riposte-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7820A1E7C10012F639 /* Riposte-Thin.otf */; };
+		6ACE7E8320A1E7C10012F639 /* Riposte-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7920A1E7C10012F639 /* Riposte-Light.otf */; };
+		6ACE7E8420A1E7C10012F639 /* Riposte-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACE7E7A20A1E7C10012F639 /* Riposte-Regular.otf */; };
 		6AF2F47E2098CD2C00380C81 /* HeartVizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */; };
 		720232DCA99BF9007745DFF2 /* Pods_HeyMom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0727CE06D0A458D51E545B4A /* Pods_HeyMom.framework */; };
 /* End PBXBuildFile section */
@@ -36,6 +51,21 @@
 		6AC61586208658D2009A0900 /* CallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallButton.swift; sourceTree = "<group>"; };
 		6AC6158820866B45009A0900 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6ACA916C2087EF6500FF655D /* TwitterHeart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TwitterHeart.json; sourceTree = "<group>"; };
+		6ACE7E6520A0BEB70012F639 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		6ACE7E6720A0C0E10012F639 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		6ACE7E6920A0C0FD0012F639 /* NumberUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberUpdateViewController.swift; sourceTree = "<group>"; };
+		6ACE7E6B20A0C10B0012F639 /* FrequencyUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyUpdateViewController.swift; sourceTree = "<group>"; };
+		6ACE7E6D20A0C1320012F639 /* FinishSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSetupViewController.swift; sourceTree = "<group>"; };
+		6ACE7E7120A1E7C10012F639 /* Riposte-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Medium.otf"; sourceTree = "<group>"; };
+		6ACE7E7220A1E7C10012F639 /* Riposte-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Black.otf"; sourceTree = "<group>"; };
+		6ACE7E7320A1E7C10012F639 /* Riposte-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-SemiBold.otf"; sourceTree = "<group>"; };
+		6ACE7E7420A1E7C10012F639 /* Riposte-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-ExtraBold.otf"; sourceTree = "<group>"; };
+		6ACE7E7520A1E7C10012F639 /* Riposte-Lazer.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Lazer.otf"; sourceTree = "<group>"; };
+		6ACE7E7620A1E7C10012F639 /* Riposte-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Bold.otf"; sourceTree = "<group>"; };
+		6ACE7E7720A1E7C10012F639 /* Riposte-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Heavy.otf"; sourceTree = "<group>"; };
+		6ACE7E7820A1E7C10012F639 /* Riposte-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Thin.otf"; sourceTree = "<group>"; };
+		6ACE7E7920A1E7C10012F639 /* Riposte-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Light.otf"; sourceTree = "<group>"; };
+		6ACE7E7A20A1E7C10012F639 /* Riposte-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Riposte-Regular.otf"; sourceTree = "<group>"; };
 		6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartVizView.swift; sourceTree = "<group>"; };
 		6C5E6B9BB7DF0783777CE49E /* Pods-HeyMom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyMom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeyMom/Pods-HeyMom.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,13 +112,12 @@
 		6AC615622086469C009A0900 /* HeyMom */ = {
 			isa = PBXGroup;
 			children = (
+				6ACE7E8720A1EC870012F639 /* App Mgnt and Utilities */,
 				6AC615632086469C009A0900 /* AppDelegate.swift */,
 				6AC61584208653F3009A0900 /* AppManager.swift */,
 				6AC61582208650A3009A0900 /* ProviderDelegate.swift */,
-				6AC615652086469C009A0900 /* ViewController.swift */,
-				6AC61586208658D2009A0900 /* CallButton.swift */,
-				6AC6158820866B45009A0900 /* SettingsViewController.swift */,
-				6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */,
+				6ACE7E8620A1EC620012F639 /* Main View */,
+				6ACE7E8520A1EC290012F639 /* Onboarding and Settings */,
 				6AC6157720864FFD009A0900 /* Resources */,
 			);
 			path = HeyMom;
@@ -97,11 +126,12 @@
 		6AC6157720864FFD009A0900 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6ACA916B2087EF6500FF655D /* Animations */,
 				6AC6157B20864FFD009A0900 /* Main.storyboard */,
 				6AC6157920864FFD009A0900 /* LaunchScreen.storyboard */,
 				6AC6157820864FFD009A0900 /* Assets.xcassets */,
 				6AC6157D20864FFD009A0900 /* Info.plist */,
+				6ACE7E7020A1E7C10012F639 /* Fonts */,
+				6ACA916B2087EF6500FF655D /* Animations */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -112,6 +142,54 @@
 				6ACA916C2087EF6500FF655D /* TwitterHeart.json */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		6ACE7E7020A1E7C10012F639 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6ACE7E7120A1E7C10012F639 /* Riposte-Medium.otf */,
+				6ACE7E7220A1E7C10012F639 /* Riposte-Black.otf */,
+				6ACE7E7320A1E7C10012F639 /* Riposte-SemiBold.otf */,
+				6ACE7E7420A1E7C10012F639 /* Riposte-ExtraBold.otf */,
+				6ACE7E7520A1E7C10012F639 /* Riposte-Lazer.otf */,
+				6ACE7E7620A1E7C10012F639 /* Riposte-Bold.otf */,
+				6ACE7E7720A1E7C10012F639 /* Riposte-Heavy.otf */,
+				6ACE7E7820A1E7C10012F639 /* Riposte-Thin.otf */,
+				6ACE7E7920A1E7C10012F639 /* Riposte-Light.otf */,
+				6ACE7E7A20A1E7C10012F639 /* Riposte-Regular.otf */,
+			);
+			name = Fonts;
+			path = HeyMom/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
+		6ACE7E8520A1EC290012F639 /* Onboarding and Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6AC6158820866B45009A0900 /* SettingsViewController.swift */,
+				6ACE7E6520A0BEB70012F639 /* OnboardingPageViewController.swift */,
+				6ACE7E6720A0C0E10012F639 /* WelcomeViewController.swift */,
+				6ACE7E6920A0C0FD0012F639 /* NumberUpdateViewController.swift */,
+				6ACE7E6B20A0C10B0012F639 /* FrequencyUpdateViewController.swift */,
+				6ACE7E6D20A0C1320012F639 /* FinishSetupViewController.swift */,
+			);
+			path = "Onboarding and Settings";
+			sourceTree = "<group>";
+		};
+		6ACE7E8620A1EC620012F639 /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				6AC615652086469C009A0900 /* ViewController.swift */,
+				6AC61586208658D2009A0900 /* CallButton.swift */,
+				6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */,
+			);
+			path = "Main View";
+			sourceTree = "<group>";
+		};
+		6ACE7E8720A1EC870012F639 /* App Mgnt and Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "App Mgnt and Utilities";
 			sourceTree = "<group>";
 		};
 		8DB124ECE062E4C2BA333717 /* Frameworks */ = {
@@ -182,9 +260,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ACE7E7B20A1E7C10012F639 /* Riposte-Medium.otf in Resources */,
+				6ACE7E8020A1E7C10012F639 /* Riposte-Bold.otf in Resources */,
 				6ACA916D2087EF6500FF655D /* TwitterHeart.json in Resources */,
+				6ACE7E8120A1E7C10012F639 /* Riposte-Heavy.otf in Resources */,
 				6AC6158020864FFD009A0900 /* Main.storyboard in Resources */,
+				6ACE7E8320A1E7C10012F639 /* Riposte-Light.otf in Resources */,
+				6ACE7E8220A1E7C10012F639 /* Riposte-Thin.otf in Resources */,
+				6ACE7E8420A1E7C10012F639 /* Riposte-Regular.otf in Resources */,
+				6ACE7E7D20A1E7C10012F639 /* Riposte-SemiBold.otf in Resources */,
+				6ACE7E7E20A1E7C10012F639 /* Riposte-ExtraBold.otf in Resources */,
 				6AC6157E20864FFD009A0900 /* Assets.xcassets in Resources */,
+				6ACE7E7C20A1E7C10012F639 /* Riposte-Black.otf in Resources */,
+				6ACE7E7F20A1E7C10012F639 /* Riposte-Lazer.otf in Resources */,
 				6AC6157F20864FFD009A0900 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,9 +325,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ACE7E6C20A0C10B0012F639 /* FrequencyUpdateViewController.swift in Sources */,
+				6ACE7E6820A0C0E10012F639 /* WelcomeViewController.swift in Sources */,
 				6AC61583208650A3009A0900 /* ProviderDelegate.swift in Sources */,
+				6ACE7E6E20A0C1320012F639 /* FinishSetupViewController.swift in Sources */,
 				6AC615662086469C009A0900 /* ViewController.swift in Sources */,
 				6AC615642086469C009A0900 /* AppDelegate.swift in Sources */,
+				6ACE7E6A20A0C0FD0012F639 /* NumberUpdateViewController.swift in Sources */,
+				6ACE7E6620A0BEB70012F639 /* OnboardingPageViewController.swift in Sources */,
 				6AF2F47E2098CD2C00380C81 /* HeartVizView.swift in Sources */,
 				6AC61585208653F3009A0900 /* AppManager.swift in Sources */,
 				6AC61587208658D2009A0900 /* CallButton.swift in Sources */,

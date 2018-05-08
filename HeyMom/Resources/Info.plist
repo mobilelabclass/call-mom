@@ -30,6 +30,19 @@
 	<string></string>
 	<key>NSContactsUsageDescription</key>
 	<string>Acess to addess book.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Riposte-Black</string>
+		<string>Riposte-Bold</string>
+		<string>Riposte-ExtraBold</string>
+		<string>Riposte-Heavy</string>
+		<string>Riposte-Lazer</string>
+		<string>Riposte-Light</string>
+		<string>Riposte-Medium</string>
+		<string>Riposte-Regular</string>
+		<string>Riposte-SemiBold</string>
+		<string>Riposte-Thin</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
