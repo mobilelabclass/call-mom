@@ -29,7 +29,7 @@
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>NSContactsUsageDescription</key>
-	<string>Acess to addess book.</string>
+	<string>Pick your Mom from your address book</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Riposte-Black.otf</string>

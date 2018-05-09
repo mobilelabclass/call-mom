@@ -27,7 +27,7 @@ class HeartVizView: UIView {
                                   height: h.canvasHeight)
 //        shapeLayer.backgroundColor = UIColor.blue.withAlphaComponent(0.5).cgColor
         shapeLayer.path = h.bezierPath.cgPath
-        shapeLayer.strokeColor = UIColor.red.cgColor
+        shapeLayer.strokeColor = UIColor.magenta.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 20.0
         shapeLayer.lineCap = kCALineCapRound
@@ -41,7 +41,7 @@ class HeartVizView: UIView {
                                        width: s.canvasWidth,
                                        height: s.canvasHeight)
         silhouetteLayer.path = h.bezierPath.cgPath
-        silhouetteLayer.strokeColor = UIColor.red.withAlphaComponent(0.2).cgColor
+        silhouetteLayer.strokeColor = UIColor.magenta.withAlphaComponent(0.2).cgColor
         silhouetteLayer.fillColor = UIColor.clear.cgColor
         silhouetteLayer.lineWidth = 20.0
         silhouetteLayer.lineCap = kCALineCapRound

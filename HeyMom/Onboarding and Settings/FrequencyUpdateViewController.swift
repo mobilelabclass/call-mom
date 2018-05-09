@@ -29,6 +29,9 @@ class FrequencyUpdateViewController: UIViewController {
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
     
+    // Haptic feedback
+    var feedbackGenerator = UISelectionFeedbackGenerator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -37,6 +40,8 @@ class FrequencyUpdateViewController: UIViewController {
             backButton.isHidden = true
             nextButton.isHidden = true
         }
+        
+        feedbackGenerator.prepare()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,11 +63,21 @@ class FrequencyUpdateViewController: UIViewController {
         dayCount = max(1, dayCount - 1)
         
         dayCountLabel.text = "\(dayCount) \(daySuffix)"
+        
+        // Provide haptic feedback
+        feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator.selectionChanged()
+        feedbackGenerator.prepare()
     }
     
     @IBAction func handleSwipeRight(_ sender: UISwipeGestureRecognizer) {
         dayCount = min(30, dayCount + 1)
 
         dayCountLabel.text = "\(dayCount) \(daySuffix)"
+        
+        // Provide haptic feedback
+        feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator.selectionChanged()
+        feedbackGenerator.prepare()
     }
 }

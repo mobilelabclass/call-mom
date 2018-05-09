@@ -6,17 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Riposte-Black.otf">
-            <string>Riposte-Black</string>
-        </array>
-        <array key="Riposte-Bold.otf">
-            <string>Riposte-Bold</string>
+        <array key="Riposte-Lazer.otf">
+            <string>Riposte-Lazer</string>
         </array>
         <array key="Riposte-Light.otf">
             <string>Riposte-Light</string>
@@ -34,20 +32,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-6k-Sdy" customClass="CallButton" customModule="HeyMom" customModuleProvider="target">
-                                <rect key="frame" x="147" y="487" width="80" height="80"/>
-                                <color key="backgroundColor" red="0.16078431900000001" green="0.88627451660000001" blue="0.48902348239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-6k-Sdy" customClass="CallButton" customModule="HeyMom" customModuleProvider="target">
+                                <rect key="frame" x="147" y="528" width="80" height="80"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Hmx-O3-7Ow"/>
                                     <constraint firstAttribute="width" constant="80" id="M4a-4f-fg7"/>
                                 </constraints>
+                                <state key="normal" image="phone"/>
                                 <connections>
                                     <action selector="handleCallButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wKy-yZ-3LN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Called" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Off-50-jVe">
                                 <rect key="frame" x="16" y="56" width="343" height="40"/>
-                                <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="33"/>
+                                <fontDescription key="fontDescription" name="Riposte-Regular" family="Riposte" pointSize="33"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -57,15 +56,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dby-b6-k5x">
-                                <rect key="frame" x="16" y="607" width="90" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dby-b6-k5x">
+                                <rect key="frame" x="16" y="607" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1o7-QN-Oyu"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="qlr-JV-Noj"/>
+                                    <constraint firstAttribute="width" constant="44" id="qlr-JV-Noj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Settings">
+                                <state key="normal" image="gear">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -73,25 +70,32 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIC-9g-i5h" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
-                                <rect key="frame" x="62" y="170" width="250" height="250"/>
+                                <rect key="frame" x="62" y="218.5" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="8C6-fj-Q29"/>
                                     <constraint firstAttribute="height" constant="250" id="tm3-lz-XfI"/>
                                 </constraints>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-fx-I4D" userLabel="Call button spacer">
+                                <rect key="frame" x="-0.5" y="468.5" width="375" height="198.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VDc-N1-xnk" secondAttribute="trailing" constant="16" id="60x-gz-R1n"/>
                             <constraint firstItem="VDc-N1-xnk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="6S4-dX-zta"/>
-                            <constraint firstAttribute="trailing" secondItem="Dby-b6-k5x" secondAttribute="trailing" constant="269" id="7KZ-i2-Von"/>
+                            <constraint firstItem="OIC-9g-i5h" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="97W-vr-mxU"/>
+                            <constraint firstItem="Zi0-fx-I4D" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Dpy-j3-7Nj"/>
                             <constraint firstItem="Off-50-jVe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="GbG-cm-Xb3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dtn-6k-Sdy" secondAttribute="bottom" constant="100" id="J9P-b1-sGs"/>
                             <constraint firstItem="OIC-9g-i5h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wfl-kd-VOX"/>
-                            <constraint firstItem="OIC-9g-i5h" firstAttribute="top" secondItem="VDc-N1-xnk" secondAttribute="bottom" constant="42" id="WjF-gP-Wrn"/>
                             <constraint firstItem="Off-50-jVe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fte-r9-KWo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Zi0-fx-I4D" secondAttribute="bottom" id="g81-DR-NHg"/>
+                            <constraint firstItem="Dtn-6k-Sdy" firstAttribute="centerY" secondItem="Zi0-fx-I4D" secondAttribute="centerY" id="mio-sy-ulU"/>
+                            <constraint firstItem="Zi0-fx-I4D" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="sYy-kl-VY9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dby-b6-k5x" secondAttribute="bottom" constant="16" id="ue2-9q-rp2"/>
                             <constraint firstItem="VDc-N1-xnk" firstAttribute="top" secondItem="Off-50-jVe" secondAttribute="bottom" constant="8" id="uif-dv-hQO"/>
+                            <constraint firstItem="Zi0-fx-I4D" firstAttribute="top" secondItem="OIC-9g-i5h" secondAttribute="bottom" id="vLy-DF-YGM"/>
                             <constraint firstItem="Dby-b6-k5x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wm1-O9-8Pa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Off-50-jVe" secondAttribute="trailing" constant="16" id="y91-UO-Udm"/>
                             <constraint firstItem="Dtn-6k-Sdy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zOQ-Z7-Cq1"/>
@@ -124,27 +128,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~ Welcome ~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onp-L1-4tA">
-                                <rect key="frame" x="113" y="100" width="149" height="30.5"/>
-                                <fontDescription key="fontDescription" name="Riposte-Black" family="Riposte" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey Mom! helps you remember to call your mother." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onp-L1-4tA">
+                                <rect key="frame" x="20" y="100" width="335" height="144"/>
+                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJS-f9-Hg4">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave0" translatesAutoresizingMaskIntoConstraints="NO" id="cTv-zH-46a">
+                                <rect key="frame" x="0.0" y="292" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cTv-zH-46a" secondAttribute="height" multiplier="1:1" id="iAv-n1-IOZ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJS-f9-Hg4">
+                                <rect key="frame" x="143.5" y="321.5" width="88" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Czd-hW-rZC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Next &gt;">
+                                <state key="normal" image="arrow_right">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="handleNextButton:" destination="m3J-NV-pjD" eventType="touchUpInside" id="PXC-ve-LKA"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-AD-3cx" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-AD-3cx" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
                                 <rect key="frame" x="62" y="208" width="250" height="250"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -156,17 +164,21 @@
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Onp-L1-4tA" firstAttribute="top" secondItem="K7Q-dP-m0N" secondAttribute="top" constant="80" id="2On-f8-JbK"/>
-                            <constraint firstItem="K7Q-dP-m0N" firstAttribute="bottom" secondItem="KJS-f9-Hg4" secondAttribute="bottom" constant="20" id="4wG-n2-Eih"/>
+                            <constraint firstAttribute="bottom" secondItem="cTv-zH-46a" secondAttribute="bottom" id="Ayo-Fp-q6l"/>
                             <constraint firstItem="3UN-AD-3cx" firstAttribute="centerY" secondItem="ljK-Rf-qtA" secondAttribute="centerY" id="BEc-Gg-Vp6"/>
-                            <constraint firstItem="KJS-f9-Hg4" firstAttribute="leading" secondItem="K7Q-dP-m0N" secondAttribute="leading" constant="20" id="FAf-nj-qHr"/>
-                            <constraint firstItem="K7Q-dP-m0N" firstAttribute="trailing" secondItem="KJS-f9-Hg4" secondAttribute="trailing" constant="20" id="FFq-oS-oqs"/>
-                            <constraint firstItem="Onp-L1-4tA" firstAttribute="centerX" secondItem="ljK-Rf-qtA" secondAttribute="centerX" id="s1T-b8-96h"/>
+                            <constraint firstItem="cTv-zH-46a" firstAttribute="width" secondItem="ljK-Rf-qtA" secondAttribute="width" id="OIy-ih-Cq6"/>
+                            <constraint firstItem="KJS-f9-Hg4" firstAttribute="centerY" secondItem="K7Q-dP-m0N" secondAttribute="centerY" id="PvI-NO-Qzq"/>
+                            <constraint firstItem="Onp-L1-4tA" firstAttribute="leading" secondItem="K7Q-dP-m0N" secondAttribute="leading" constant="20" id="QnD-UY-Vhn"/>
+                            <constraint firstItem="cTv-zH-46a" firstAttribute="centerX" secondItem="K7Q-dP-m0N" secondAttribute="centerX" id="Wtc-hG-n3g"/>
+                            <constraint firstItem="Onp-L1-4tA" firstAttribute="trailing" secondItem="K7Q-dP-m0N" secondAttribute="trailing" constant="-20" id="amy-tr-Ord"/>
                             <constraint firstItem="3UN-AD-3cx" firstAttribute="centerX" secondItem="ljK-Rf-qtA" secondAttribute="centerX" id="sag-yO-Dcr"/>
+                            <constraint firstItem="KJS-f9-Hg4" firstAttribute="centerX" secondItem="K7Q-dP-m0N" secondAttribute="centerX" id="uNI-9U-ebX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K7Q-dP-m0N"/>
                     </view>
                     <connections>
                         <outlet property="heartVizView" destination="3UN-AD-3cx" id="GAz-rH-ESc"/>
+                        <outlet property="waveImageView" destination="cTv-zH-46a" id="QXk-Qb-OBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fle-AE-uXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,29 +193,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-hx-5Qp">
-                                <rect key="frame" x="113" y="603" width="242" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-hx-5Qp">
+                                <rect key="frame" x="267" y="603" width="88" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="g71-mx-Ek3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Next &gt;">
+                                <state key="normal" image="arrow_right">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="handleNextButton:" destination="5ae-lm-huD" eventType="touchUpInside" id="9kk-fn-6Tb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOC-rb-dt5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOC-rb-dt5">
                                 <rect key="frame" x="20" y="603" width="83" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Eub-iH-L03"/>
                                     <constraint firstAttribute="width" constant="83" id="gok-9M-Sdm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="&lt; Back">
+                                <state key="normal" image="arrow_left">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -320,7 +328,6 @@
                             <constraint firstItem="69u-2b-uC2" firstAttribute="bottom" secondItem="qOC-rb-dt5" secondAttribute="bottom" constant="20" id="gTh-k6-MVs"/>
                             <constraint firstItem="69u-2b-uC2" firstAttribute="trailing" secondItem="aqG-yc-Bce" secondAttribute="trailing" constant="16" id="i0k-mK-wQO"/>
                             <constraint firstItem="aqG-yc-Bce" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pc7-ui-LQB" secondAttribute="leading" constant="20" symbolic="YES" id="leP-jh-PT1"/>
-                            <constraint firstItem="aSC-hx-5Qp" firstAttribute="leading" secondItem="qOC-rb-dt5" secondAttribute="trailing" constant="10" id="vgP-vC-Ume"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="69u-2b-uC2"/>
                     </view>
@@ -345,29 +352,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wau-q3-9hQ">
-                                <rect key="frame" x="113" y="603" width="242" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wau-q3-9hQ">
+                                <rect key="frame" x="267" y="603" width="88" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GfK-Ol-dWd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Next &gt;">
+                                <state key="normal" image="arrow_right">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="handleNextButton:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="hbe-nL-Bnj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-6Y-c0l">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-6Y-c0l">
                                 <rect key="frame" x="20" y="603" width="83" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="UZh-zy-ypA"/>
                                     <constraint firstAttribute="width" constant="83" id="jGM-fJ-Kas"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="&lt; Back">
+                                <state key="normal" image="arrow_left">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -375,14 +378,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81q-v6-uEB">
-                                <rect key="frame" x="41.5" y="279" width="293" height="109.5"/>
-                                <fontDescription key="fontDescription" name="Riposte-Black" family="Riposte" pointSize="91"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="54.5" y="279.5" width="267.5" height="109.5"/>
+                                <fontDescription key="fontDescription" name="Riposte-Lazer" family="Riposte" pointSize="91"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember to call every" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plK-ZS-aHb">
-                                <rect key="frame" x="49" y="250" width="277" height="29"/>
-                                <fontDescription key="fontDescription" name="Riposte-Black" family="Riposte" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me to call Mom every" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plK-ZS-aHb">
+                                <rect key="frame" x="28" y="250" width="319" height="29"/>
+                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -392,20 +394,29 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28k-Eo-U7c" userLabel="Underline">
+                                <rect key="frame" x="54.5" y="377" width="267.5" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="LnW-5q-QVz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="81q-v6-uEB" firstAttribute="centerY" secondItem="RPC-Ou-8NU" secondAttribute="centerY" id="8KI-VG-FEw"/>
-                            <constraint firstItem="81q-v6-uEB" firstAttribute="top" secondItem="plK-ZS-aHb" secondAttribute="bottom" id="AuN-5c-9FC"/>
                             <constraint firstItem="81q-v6-uEB" firstAttribute="centerY" secondItem="RPC-Ou-8NU" secondAttribute="centerY" id="Ix2-35-t6W"/>
                             <constraint firstItem="kjg-6Y-c0l" firstAttribute="leading" secondItem="P0w-gt-ktw" secondAttribute="leading" constant="20" id="PS9-Pl-rg9"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="trailing" secondItem="Wau-q3-9hQ" secondAttribute="trailing" constant="20" id="RWw-Gw-QYO"/>
                             <constraint firstItem="plK-ZS-aHb" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="S1a-bR-UU8"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="bottom" secondItem="kjg-6Y-c0l" secondAttribute="bottom" constant="20" id="WIZ-kr-Mpg"/>
-                            <constraint firstItem="Wau-q3-9hQ" firstAttribute="leading" secondItem="kjg-6Y-c0l" secondAttribute="trailing" constant="10" id="cK5-Uy-e1V"/>
+                            <constraint firstItem="28k-Eo-U7c" firstAttribute="top" secondItem="81q-v6-uEB" secondAttribute="bottom" constant="-12" id="XJG-7N-MrN"/>
+                            <constraint firstItem="28k-Eo-U7c" firstAttribute="width" secondItem="81q-v6-uEB" secondAttribute="width" id="c2o-gG-QSe"/>
+                            <constraint firstItem="28k-Eo-U7c" firstAttribute="centerX" secondItem="81q-v6-uEB" secondAttribute="centerX" id="cJ0-ps-wEE"/>
                             <constraint firstItem="Je6-Tn-sQa" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="ewv-Zd-MYT"/>
                             <constraint firstItem="Wau-q3-9hQ" firstAttribute="top" secondItem="Je6-Tn-sQa" secondAttribute="bottom" constant="22" id="mzx-3L-xC2"/>
+                            <constraint firstItem="81q-v6-uEB" firstAttribute="top" secondItem="plK-ZS-aHb" secondAttribute="bottom" constant="0.5" id="oTl-Hq-bkx"/>
                             <constraint firstItem="81q-v6-uEB" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="vwi-lr-Wif"/>
                             <constraint firstItem="81q-v6-uEB" firstAttribute="centerX" secondItem="RPC-Ou-8NU" secondAttribute="centerX" id="wu4-Hp-UXv"/>
                             <constraint firstItem="P0w-gt-ktw" firstAttribute="bottom" secondItem="Wau-q3-9hQ" secondAttribute="bottom" constant="20" id="xbY-x2-ijF"/>
@@ -435,7 +446,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2590" y="1187"/>
+            <point key="canvasLocation" x="2589.5999999999999" y="1186.9565217391305"/>
         </scene>
         <!--Finish Setup View Controller-->
         <scene sceneID="nmb-QC-WBX">
@@ -446,34 +457,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish Setup Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2r-Ru-toz">
-                                <rect key="frame" x="67.5" y="319" width="241.5" height="30.5"/>
-                                <fontDescription key="fontDescription" name="Riposte-Black" family="Riposte" pointSize="25"/>
+                                <rect key="frame" x="74.5" y="319" width="226" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ber-a3-skb">
-                                <rect key="frame" x="113" y="603" width="242" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ber-a3-skb">
+                                <rect key="frame" x="267" y="603" width="88" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="I3q-qU-RXd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="Finish &gt;">
+                                <state key="normal" image="arrow_right">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="handleFinishButton:" destination="zCh-6u-LfS" eventType="touchUpInside" id="Y0G-xs-4my"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn0-Ke-RBA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn0-Ke-RBA">
                                 <rect key="frame" x="20" y="603" width="83" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="Y3x-GV-UW1"/>
                                     <constraint firstAttribute="height" constant="44" id="upa-AZ-GH4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <state key="normal" title="&lt; Back">
+                                <state key="normal" image="arrow_left">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -488,7 +495,6 @@
                             <constraint firstItem="W2r-Ru-toz" firstAttribute="centerY" secondItem="VaG-dT-1wf" secondAttribute="centerY" id="Np8-yL-oEn"/>
                             <constraint firstItem="NlQ-Uv-Vuy" firstAttribute="trailing" secondItem="Ber-a3-skb" secondAttribute="trailing" constant="20" id="fKp-Bz-yYI"/>
                             <constraint firstItem="W2r-Ru-toz" firstAttribute="centerX" secondItem="VaG-dT-1wf" secondAttribute="centerX" id="u8a-sO-Ur1"/>
-                            <constraint firstItem="Ber-a3-skb" firstAttribute="leading" secondItem="tn0-Ke-RBA" secondAttribute="trailing" constant="10" id="urU-qn-rac"/>
                             <constraint firstItem="tn0-Ke-RBA" firstAttribute="leading" secondItem="NlQ-Uv-Vuy" secondAttribute="leading" constant="20" id="yC4-RN-5Fh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NlQ-Uv-Vuy"/>
@@ -529,7 +535,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="XXA-5L-3YO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
                                         <state key="normal" title="Phone Number">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -543,7 +549,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="4Vh-NG-O6r"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
                                         <state key="normal" title="Frequency">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -611,4 +617,11 @@
             <point key="canvasLocation" x="1045.5999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow_left" width="88" height="44"/>
+        <image name="arrow_right" width="88" height="44"/>
+        <image name="gear" width="44" height="44"/>
+        <image name="phone" width="80" height="80"/>
+        <image name="wave0" width="512" height="512"/>
+    </resources>
 </document>
