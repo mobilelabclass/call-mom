@@ -10,12 +10,28 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var phoneNumberButton: UIButton!
+    @IBOutlet weak var frequencyButton: UIButton!
+    
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
     
+    var daySuffix: String {
+        return (appMgr.dayCount > 1) ? "days" : "day"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+ 
+        let numberString = appMgr.telephoneNumber?.absoluteString.replacingOccurrences(of: "tel://", with: "")
+        phoneNumberButton.setTitle(numberString, for: .normal)
+        
+        let frequencyString = "\(appMgr.dayCount) \(daySuffix)"
+        frequencyButton.setTitle(frequencyString, for: .normal)
     }
     
     @IBAction func handleDoneButton(_ sender: UIButton) {

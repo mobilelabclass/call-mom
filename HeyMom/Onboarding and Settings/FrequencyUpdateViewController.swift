@@ -26,6 +26,9 @@ class FrequencyUpdateViewController: UIViewController {
         return (dayCount > 1) ? "days" : "day"
     }
 
+    // Get global singleton object.
+    let appMgr = AppManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -34,6 +37,13 @@ class FrequencyUpdateViewController: UIViewController {
             backButton.isHidden = true
             nextButton.isHidden = true
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Store day count on view exit.
+        appMgr.storeDayCount(dayCount)
     }
 
     @IBAction func handleBackButton(_ sender: UIButton) {

@@ -55,13 +55,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
             }
         }
         
-        //requesting for authorization
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
-            
-        })
-
-
-        findContactsWithName(name: "mom")
 
 
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -73,12 +66,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         onboardingPageVC.didFinishSetup = {
             UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
                 onboardingPageVC.view.frame.origin = CGPoint(x: 0, y: onboardingPageVC.view.bounds.height)
-                onboardingPageVC.view.alpha = 0.25
             }, completion: { (finished) in
                 onboardingPageVC.view.removeFromSuperview()
                 onboardingPageVC.removeFromParentViewController()
             })
         }
+
+        
+        heartVizView.lineAnimation()
+
+
+        //requesting for authorization
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
+            
+        })
+        findContactsWithName(name: "mom")
 
     }
 

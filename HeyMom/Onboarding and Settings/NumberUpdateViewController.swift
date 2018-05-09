@@ -29,6 +29,9 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
     // Set to true if using VC from settings view.
     var isSettingsMode = false;
 
+    // Get global singleton object.
+    let appMgr = AppManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,22 +44,22 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
         // Show done button only when keyboard is visible.
         doneButton.isHidden = true
 
-        //        numberTextField.text = appMgr.telephoneNumber?.absoluteString.replacingOccurrences(of: "tel://", with: "")
-        //
-        //        // Required for textfield delegate methods.
-        //        numberTextField.delegate = self
 
         numberTextField.delegate = self
-    
-//        numberTextField.text = "Phone"
     
         let color = UIColor.white.withAlphaComponent(0.35)
         numberTextField.attributedPlaceholder =
             NSAttributedString(string: "Mom's Number",
                                attributes: [NSAttributedStringKey.foregroundColor: color])
-
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+ 
+        // Store number on view exit.
+        appMgr.storeTelephoneNumber(numberTextField.text!)
+    }
     
     @IBAction func handleBackButton(_ sender: UIButton) {
         self.didGoBack?()
@@ -105,7 +108,6 @@ extension NumberUpdateViewController: CNContactPickerDelegate {
         print("Cancel Contact Picker")
     }
 }
-
 
 
 extension NumberUpdateViewController: UITableViewDelegate, UITableViewDataSource {

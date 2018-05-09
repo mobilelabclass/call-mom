@@ -24,7 +24,10 @@ class AppManager {
 
     // Number for making call.
     private(set) var telephoneNumber: URL?
-    
+
+    // Reminder frequency in days.
+    private(set) var dayCount: Int = 5
+
     // Callback method for call state changed.
     var callStateChanged: ((CallState) -> ())?
 
@@ -35,13 +38,20 @@ class AppManager {
     }
     
     func storeTelephoneNumber(_ number: String) {
-        guard let number = URL(string: "tel://" + number) else {
+        
+        let numberString = number.replacingOccurrences(of: "\\D", with: "", options: .regularExpression)
+        
+        guard let number = URL(string: "tel://" + numberString) else {
             print("ERROR: Number not valid")
             return
         }
 
         self.telephoneNumber = number
     }
-    
+
+    func storeDayCount(_ dayCount: Int) {
+        self.dayCount = dayCount
+    }
+
 }
 

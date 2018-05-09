@@ -18,7 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        // Make status bar white.
+        UIApplication.shared.statusBarStyle = .lightContent
+//        
+//        UINavigationBar.appearance().isTranslucent = false
+//        UINavigationBar.appearance().backgroundColor = .green
+//        UINavigationBar.appearance().tintColor = .green
 
         // Create and setup provider delegate.
         providerDelegate = ProviderDelegate()
