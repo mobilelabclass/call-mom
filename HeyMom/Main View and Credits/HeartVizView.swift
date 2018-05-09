@@ -98,17 +98,17 @@ class HeartVizView: UIView {
         let canvasHeight: CGFloat = 400
 
         let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 249.5, y: 77.3))
-        bezierPath.addCurve(to: CGPoint(x: 352.88, y: 24.5), controlPoint1: CGPoint(x: 270.67, y: 42.1), controlPoint2: CGPoint(x: 313.47, y: 24.5))
-        bezierPath.addCurve(to: CGPoint(x: 473.5, y: 140.28), controlPoint1: CGPoint(x: 421.85, y: 24.5), controlPoint2: CGPoint(x: 473.5, y: 67.74))
-        bezierPath.addCurve(to: CGPoint(x: 432.58, y: 245.94), controlPoint1: CGPoint(x: 473.5, y: 171.57), controlPoint2: CGPoint(x: 460.94, y: 212.2))
-        bezierPath.addCurve(to: CGPoint(x: 332.42, y: 333.94), controlPoint1: CGPoint(x: 404.22, y: 279.67), controlPoint2: CGPoint(x: 387.35, y: 297.64))
-        bezierPath.addCurve(to: CGPoint(x: 249.5, y: 376.5), controlPoint1: CGPoint(x: 277.5, y: 370.24), controlPoint2: CGPoint(x: 249.5, y: 376.5))
+        bezierPath.move(to: CGPoint(x: 249.5, y: 376.5))
         bezierPath.addCurve(to: CGPoint(x: 166.58, y: 333.94), controlPoint1: CGPoint(x: 249.5, y: 376.5), controlPoint2: CGPoint(x: 221.5, y: 370.24))
         bezierPath.addCurve(to: CGPoint(x: 66.42, y: 245.94), controlPoint1: CGPoint(x: 111.65, y: 297.64), controlPoint2: CGPoint(x: 94.78, y: 279.67))
         bezierPath.addCurve(to: CGPoint(x: 25.5, y: 140.28), controlPoint1: CGPoint(x: 38.06, y: 212.2), controlPoint2: CGPoint(x: 25.5, y: 171.57))
         bezierPath.addCurve(to: CGPoint(x: 146.12, y: 24.5), controlPoint1: CGPoint(x: 25.5, y: 67.74), controlPoint2: CGPoint(x: 77.15, y: 24.5))
         bezierPath.addCurve(to: CGPoint(x: 249.5, y: 77.3), controlPoint1: CGPoint(x: 185.53, y: 24.5), controlPoint2: CGPoint(x: 228.33, y: 42.1))
+        bezierPath.addCurve(to: CGPoint(x: 352.88, y: 24.5), controlPoint1: CGPoint(x: 270.67, y: 42.1), controlPoint2: CGPoint(x: 313.47, y: 24.5))
+        bezierPath.addCurve(to: CGPoint(x: 473.5, y: 140.28), controlPoint1: CGPoint(x: 421.85, y: 24.5), controlPoint2: CGPoint(x: 473.5, y: 67.74))
+        bezierPath.addCurve(to: CGPoint(x: 432.58, y: 245.94), controlPoint1: CGPoint(x: 473.5, y: 171.57), controlPoint2: CGPoint(x: 460.94, y: 212.2))
+        bezierPath.addCurve(to: CGPoint(x: 332.42, y: 333.94), controlPoint1: CGPoint(x: 404.22, y: 279.67), controlPoint2: CGPoint(x: 387.35, y: 297.64))
+        bezierPath.addCurve(to: CGPoint(x: 249.5, y: 376.5), controlPoint1: CGPoint(x: 277.5, y: 370.24), controlPoint2: CGPoint(x: 249.5, y: 376.5))
         bezierPath.close()
         
         return (canvasWidth, canvasHeight, bezierPath)
