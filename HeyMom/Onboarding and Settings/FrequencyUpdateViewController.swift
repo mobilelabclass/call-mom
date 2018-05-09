@@ -14,6 +14,7 @@ class FrequencyUpdateViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var dayCountLabel: UILabel!
     @IBOutlet weak var frequencySlider: UISlider!
+    @IBOutlet weak var unitLabel: UILabel!
     
     var didGoBack: (() -> ())?
     var didGoNext: (() -> ())?
@@ -65,7 +66,8 @@ class FrequencyUpdateViewController: UIViewController {
         if dayCount == Int(sender.value) { return }
         
         dayCount = Int(sender.value)
-        dayCountLabel.text = "\(dayCount) \(daySuffix)"
+        dayCountLabel.text = "\(dayCount)"
+        unitLabel.text = "\(daySuffix)"
 
         // Provide haptic feedback
         feedbackGenerator = UISelectionFeedbackGenerator()
