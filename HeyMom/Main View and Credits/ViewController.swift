@@ -40,6 +40,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
                     self.callDurationLabel.text = "CallTime: \(elapsed) seconds"
                     self.callDateLabel.text = self.timeStamp()
                 
+                    if elapsed > 5 {
+                        self.appMgr.lastCallDuration = elapsed
+                        self.appMgr.lastCallDate = Date()
+                    }
+                
                 case .Dialing:
                     print("currentCallState: Dialing")
 
@@ -69,17 +74,49 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
             })
         }
 
-        
-        heartVizView.lineAnimation()
-
+        self.heartVizView.shapeLayer.removeAllAnimations()
+        self.heartVizView.shapeLayer.strokeEnd = 1.0
 
         //requesting for authorization
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
             
         })
         findContactsWithName(name: "mom")
-
     }
+    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+//        heartVizView.lineAnimation()
+
+//        self?.heartVizView.reverseAnimation()
+
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.heartVizView.reverseAnimation()
+        }
+        
+
+        
+//        if let lastCallDate = self.appMgr.lastCallDate {
+//
+//            print(lastCallDate)
+//            let sinceLastCall =  Date().timeIntervalSince(lastCallDate)
+//            print(sinceLastCall)
+//
+//            print(">>>>>>>>>>>>>>>> \(sinceLastCall)")
+//
+//            heartVizView.reverseAnimation()
+//        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        heartVizView.shapeLayer.removeAllAnimations()
+        heartVizView.shapeLayer.strokeEnd = 1.0
+    }
+    
 
     /*
     @IBAction func settingsButton(_ sender: UIButton) {
@@ -97,34 +134,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
   
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
-
-//        if let number = appMgr.telephoneNumber {
-//            UIApplication.shared.open(number, options: [:], completionHandler: nil)
-//        }
-
-        //creating the notification content
-        let content = UNMutableNotificationContent()
-        
-        //adding title, subtitle, body and badge
-        content.title = "Reminder to call your mom"
-//        content.subtitle = ""
-        content.body = "It's been 5 days since you called your mom."
-        content.sound = UNNotificationSound.default()
-        //        content.badge = 1
-        
-        //getting the notification trigger
-        //it will be called after 5 seconds
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        //getting the notification request
-        let request = UNNotificationRequest(identifier: "HeyMom", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().delegate = self
-
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        
-        //adding the notification to notification center
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        if let number = appMgr.telephoneNumber {
+            UIApplication.shared.open(number, options: [:], completionHandler: nil)
+        }
     }
     
     func timeStamp() -> String {
@@ -134,10 +146,44 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         //displaying the ios local notification when app is in foreground
-        completionHandler([.alert, .sound])
+        completionHandler([.alert, .badge, .sound])
     }
 
-
+    
+    @IBAction func handleTestNotification(_ sender: UIButton) {
+         //creating the notification content
+         let content = UNMutableNotificationContent()
+         
+         //adding title, subtitle, body and badge
+         content.title = "Reminder to call your mom"
+         //        content.subtitle = ""
+         content.body = "It's been 5 days since you called"
+         content.sound = UNNotificationSound.default()
+         content.badge = 0
+         
+         
+         //        let alertDays = 3
+         //        let daySeconds = 86400
+         //        let alertSeconds = Double(alertDays * daySeconds)
+         
+         
+//         let alertSeconds = Double(1 * 60)
+        
+         
+         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+         
+         //getting the notification request
+         let request = UNNotificationRequest(identifier: "HeyMom", content: content, trigger: trigger)
+         
+         UNUserNotificationCenter.current().delegate = self
+         
+         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+         
+         //adding the notification to notification center
+         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    
     func findContactsWithName(name: String) {
         checkAccessStatus(completionHandler: { (accessGranted) -> Void in
             if accessGranted {

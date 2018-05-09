@@ -23,11 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Make status bar white.
         UIApplication.shared.statusBarStyle = .lightContent
-//        
-//        UINavigationBar.appearance().isTranslucent = false
-//        UINavigationBar.appearance().backgroundColor = .green
-//        UINavigationBar.appearance().tintColor = .green
 
+        // Clear badges number.
+        UIApplication.shared.applicationIconBadgeNumber = 0;
+        
         // Create and setup provider delegate.
         providerDelegate = ProviderDelegate()
         providerDelegate.setupCallObserver()

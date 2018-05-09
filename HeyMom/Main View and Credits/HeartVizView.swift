@@ -47,7 +47,6 @@ class HeartVizView: UIView {
         silhouetteLayer.lineCap = kCALineCapRound
         silhouetteLayer.lineJoin = kCALineJoinRound
 
-        
         layer.addSublayer(silhouetteLayer)
 
         layer.addSublayer(shapeLayer)
@@ -60,13 +59,13 @@ class HeartVizView: UIView {
 //        animation.duration = 1
 
         animation.fromValue = shapeLayer.presentation()?.strokeEnd
-        animation.toValue = 0.8
+        animation.toValue = 1.0
 
         
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 //        animation.fromValue = presentation()?.value(forKey: event)
 //        animation.duration = max(0.1, CATransaction.animationDuration())
-        animation.duration = 1.0
+        animation.duration = 0.0
 
         animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = false
@@ -83,6 +82,7 @@ class HeartVizView: UIView {
         animation.duration = 1
         
         animation.fromValue = shapeLayer.presentation()?.strokeEnd
+//        animation.fromValue = 1.0
         animation.toValue = 0.1
         
         animation.fillMode = kCAFillModeForwards

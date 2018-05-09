@@ -27,6 +27,12 @@ class AppManager {
 
     // Reminder frequency in days.
     private(set) var dayCount: Int = 5
+    
+
+    var lastCallDuration: Int = 0
+
+    var lastCallDate: Date?
+
 
     // Callback method for call state changed.
     var callStateChanged: ((CallState) -> ())?
