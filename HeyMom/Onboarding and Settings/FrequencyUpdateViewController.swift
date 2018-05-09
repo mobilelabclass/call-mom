@@ -13,7 +13,8 @@ class FrequencyUpdateViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var dayCountLabel: UILabel!
-
+    @IBOutlet weak var frequencySlider: UISlider!
+    
     var didGoBack: (() -> ())?
     var didGoNext: (() -> ())?
     
@@ -59,25 +60,38 @@ class FrequencyUpdateViewController: UIViewController {
         self.didGoNext?()
     }
 
-    @IBAction func handleSwipeLeft(_ sender: UISwipeGestureRecognizer) {
-        dayCount = max(1, dayCount - 1)
+
+    @IBAction func handleFrequencySlider(_ sender: UISlider) {
+        if dayCount == Int(sender.value) { return }
         
+        dayCount = Int(sender.value)
         dayCountLabel.text = "\(dayCount) \(daySuffix)"
-        
+
         // Provide haptic feedback
         feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.selectionChanged()
         feedbackGenerator.prepare()
     }
     
+    @IBAction func handleSwipeLeft(_ sender: UISwipeGestureRecognizer) {
+//        dayCount = max(1, dayCount - 1)
+//
+//        dayCountLabel.text = "\(dayCount) \(daySuffix)"
+//
+//        // Provide haptic feedback
+//        feedbackGenerator = UISelectionFeedbackGenerator()
+//        feedbackGenerator.selectionChanged()
+//        feedbackGenerator.prepare()
+    }
+    
     @IBAction func handleSwipeRight(_ sender: UISwipeGestureRecognizer) {
-        dayCount = min(30, dayCount + 1)
-
-        dayCountLabel.text = "\(dayCount) \(daySuffix)"
-        
-        // Provide haptic feedback
-        feedbackGenerator = UISelectionFeedbackGenerator()
-        feedbackGenerator.selectionChanged()
-        feedbackGenerator.prepare()
+//        dayCount = min(30, dayCount + 1)
+//
+//        dayCountLabel.text = "\(dayCount) \(daySuffix)"
+//
+//        // Provide haptic feedback
+//        feedbackGenerator = UISelectionFeedbackGenerator()
+//        feedbackGenerator.selectionChanged()
+//        feedbackGenerator.prepare()
     }
 }

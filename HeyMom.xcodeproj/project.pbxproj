@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6AC615642086469C009A0900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC615632086469C009A0900 /* AppDelegate.swift */; };
+		6A5D59BB20A3390E00B142BC /* FrequencySlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D59BA20A3390E00B142BC /* FrequencySlider.swift */; };
+		6A5D59BD20A33DE000B142BC /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D59BC20A33DE000B142BC /* CreditsViewController.swift */; };
+		6A5D59C120A33E3000B142BC /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D59BE20A33E3000B142BC /* AppManager.swift */; };
+		6A5D59C220A33E3000B142BC /* ProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D59BF20A33E3000B142BC /* ProviderDelegate.swift */; };
+		6A5D59C320A33E3000B142BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D59C020A33E3000B142BC /* AppDelegate.swift */; };
 		6AC615662086469C009A0900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC615652086469C009A0900 /* ViewController.swift */; };
 		6AC6157E20864FFD009A0900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AC6157820864FFD009A0900 /* Assets.xcassets */; };
 		6AC6157F20864FFD009A0900 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC6157920864FFD009A0900 /* LaunchScreen.storyboard */; };
 		6AC6158020864FFD009A0900 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC6157B20864FFD009A0900 /* Main.storyboard */; };
-		6AC61583208650A3009A0900 /* ProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC61582208650A3009A0900 /* ProviderDelegate.swift */; };
-		6AC61585208653F3009A0900 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC61584208653F3009A0900 /* AppManager.swift */; };
 		6AC61587208658D2009A0900 /* CallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC61586208658D2009A0900 /* CallButton.swift */; };
 		6AC6158920866B45009A0900 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC6158820866B45009A0900 /* SettingsViewController.swift */; };
 		6ACA916D2087EF6500FF655D /* TwitterHeart.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA916C2087EF6500FF655D /* TwitterHeart.json */; };
@@ -40,15 +42,17 @@
 /* Begin PBXFileReference section */
 		0727CE06D0A458D51E545B4A /* Pods_HeyMom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeyMom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF2D777DE4C95D916E3A89A /* Pods-HeyMom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyMom.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeyMom/Pods-HeyMom.release.xcconfig"; sourceTree = "<group>"; };
+		6A5D59BA20A3390E00B142BC /* FrequencySlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencySlider.swift; sourceTree = "<group>"; };
+		6A5D59BC20A33DE000B142BC /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		6A5D59BE20A33E3000B142BC /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		6A5D59BF20A33E3000B142BC /* ProviderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDelegate.swift; sourceTree = "<group>"; };
+		6A5D59C020A33E3000B142BC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AC615602086469C009A0900 /* HeyMom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeyMom.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AC615632086469C009A0900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AC615652086469C009A0900 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6AC6157820864FFD009A0900 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AC6157A20864FFD009A0900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AC6157C20864FFD009A0900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AC6157D20864FFD009A0900 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6AC61582208650A3009A0900 /* ProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderDelegate.swift; sourceTree = "<group>"; };
-		6AC61584208653F3009A0900 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		6AC61586208658D2009A0900 /* CallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallButton.swift; sourceTree = "<group>"; };
 		6AC6158820866B45009A0900 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6ACA916C2087EF6500FF655D /* TwitterHeart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TwitterHeart.json; sourceTree = "<group>"; };
@@ -115,10 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				6ACE7E8720A1EC870012F639 /* App Mgnt and Utilities */,
-				6AC615632086469C009A0900 /* AppDelegate.swift */,
-				6AC61584208653F3009A0900 /* AppManager.swift */,
-				6AC61582208650A3009A0900 /* ProviderDelegate.swift */,
-				6ACE7E8620A1EC620012F639 /* Main View */,
+				6ACE7E8620A1EC620012F639 /* Main View and Credits */,
 				6ACE7E8520A1EC290012F639 /* Onboarding and Settings */,
 				6AC6157720864FFD009A0900 /* Resources */,
 			);
@@ -173,24 +174,29 @@
 				6ACE7E6920A0C0FD0012F639 /* NumberUpdateViewController.swift */,
 				6ACE7E8820A223E70012F639 /* NumberTableViewCell.swift */,
 				6ACE7E6B20A0C10B0012F639 /* FrequencyUpdateViewController.swift */,
+				6A5D59BA20A3390E00B142BC /* FrequencySlider.swift */,
 				6ACE7E6D20A0C1320012F639 /* FinishSetupViewController.swift */,
 			);
 			path = "Onboarding and Settings";
 			sourceTree = "<group>";
 		};
-		6ACE7E8620A1EC620012F639 /* Main View */ = {
+		6ACE7E8620A1EC620012F639 /* Main View and Credits */ = {
 			isa = PBXGroup;
 			children = (
 				6AC615652086469C009A0900 /* ViewController.swift */,
 				6AC61586208658D2009A0900 /* CallButton.swift */,
 				6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */,
+				6A5D59BC20A33DE000B142BC /* CreditsViewController.swift */,
 			);
-			path = "Main View";
+			path = "Main View and Credits";
 			sourceTree = "<group>";
 		};
 		6ACE7E8720A1EC870012F639 /* App Mgnt and Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6A5D59C020A33E3000B142BC /* AppDelegate.swift */,
+				6A5D59BE20A33E3000B142BC /* AppManager.swift */,
+				6A5D59BF20A33E3000B142BC /* ProviderDelegate.swift */,
 			);
 			path = "App Mgnt and Utilities";
 			sourceTree = "<group>";
@@ -214,7 +220,6 @@
 				6AC6155C2086469C009A0900 /* Sources */,
 				6AC6155D2086469C009A0900 /* Frameworks */,
 				6AC6155E2086469C009A0900 /* Resources */,
-				5259936C26713080537C2FFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,26 +288,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5259936C26713080537C2FFE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HeyMom/Pods-HeyMom-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DLLocalNotifications/DLLocalNotifications.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLLocalNotifications.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeyMom/Pods-HeyMom-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F9BBD2E2F8943D2D340D93A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,16 +314,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ACE7E8920A223E80012F639 /* NumberTableViewCell.swift in Sources */,
+				6A5D59BB20A3390E00B142BC /* FrequencySlider.swift in Sources */,
 				6ACE7E6C20A0C10B0012F639 /* FrequencyUpdateViewController.swift in Sources */,
+				6A5D59C320A33E3000B142BC /* AppDelegate.swift in Sources */,
 				6ACE7E6820A0C0E10012F639 /* WelcomeViewController.swift in Sources */,
-				6AC61583208650A3009A0900 /* ProviderDelegate.swift in Sources */,
+				6A5D59BD20A33DE000B142BC /* CreditsViewController.swift in Sources */,
 				6ACE7E6E20A0C1320012F639 /* FinishSetupViewController.swift in Sources */,
+				6A5D59C120A33E3000B142BC /* AppManager.swift in Sources */,
 				6AC615662086469C009A0900 /* ViewController.swift in Sources */,
-				6AC615642086469C009A0900 /* AppDelegate.swift in Sources */,
 				6ACE7E6A20A0C0FD0012F639 /* NumberUpdateViewController.swift in Sources */,
+				6A5D59C220A33E3000B142BC /* ProviderDelegate.swift in Sources */,
 				6ACE7E6620A0BEB70012F639 /* OnboardingPageViewController.swift in Sources */,
 				6AF2F47E2098CD2C00380C81 /* HeartVizView.swift in Sources */,
-				6AC61585208653F3009A0900 /* AppManager.swift in Sources */,
 				6AC61587208658D2009A0900 /* CallButton.swift in Sources */,
 				6AC6158920866B45009A0900 /* SettingsViewController.swift in Sources */,
 			);

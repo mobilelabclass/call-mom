@@ -6,7 +6,7 @@ target 'HeyMom' do
   use_frameworks!
 
   # Pods for HeyMom
-  pod 'lottie-ios'
-  pod 'DLLocalNotifications'
+
+
 
 end

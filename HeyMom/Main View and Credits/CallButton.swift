@@ -10,6 +10,12 @@ import UIKit
 
 class CallButton: UIButton {
 
+    override open var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.magenta.withAlphaComponent(0.5) : UIColor.magenta
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -17,5 +23,6 @@ class CallButton: UIButton {
         layer.cornerRadius = self.bounds.width / 2.0
         clipsToBounds = true
     }
+    
     
 }

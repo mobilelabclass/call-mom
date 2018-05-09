@@ -47,7 +47,7 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 
         numberTextField.delegate = self
     
-        let color = UIColor.white.withAlphaComponent(0.35)
+        let color = UIColor.black.withAlphaComponent(0.45)
         numberTextField.attributedPlaceholder =
             NSAttributedString(string: "Mom's Number",
                                attributes: [NSAttributedStringKey.foregroundColor: color])

@@ -8,8 +8,6 @@
 
 import UIKit
 import Contacts
-import Lottie
-import DLLocalNotifications
 import UserNotifications
 
 
@@ -28,7 +26,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
 
-    var animationView: LOTAnimationView!
 
     var aToggle = false
     
@@ -101,33 +98,33 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
 
-        if let number = appMgr.telephoneNumber {
-            UIApplication.shared.open(number, options: [:], completionHandler: nil)
-        }
+//        if let number = appMgr.telephoneNumber {
+//            UIApplication.shared.open(number, options: [:], completionHandler: nil)
+//        }
 
-        /*
         //creating the notification content
         let content = UNMutableNotificationContent()
         
         //adding title, subtitle, body and badge
-        content.title = "Hey this is Simplified iOS"
-        content.subtitle = "iOS Development is fun"
-        content.body = "We are learning about iOS Local Notification"
-        content.badge = 1
+        content.title = "Reminder to call your mom"
+//        content.subtitle = ""
+        content.body = "It's been 5 days since you called your mom."
+        content.sound = UNNotificationSound.default()
+        //        content.badge = 1
         
         //getting the notification trigger
         //it will be called after 5 seconds
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
         //getting the notification request
-        let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "HeyMom", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().delegate = self
+
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
         //adding the notification to notification center
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        */
-        
     }
     
     func timeStamp() -> String {
@@ -137,7 +134,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         //displaying the ios local notification when app is in foreground
-        completionHandler([.alert, .badge, .sound])
+        completionHandler([.alert, .sound])
     }
 
 
