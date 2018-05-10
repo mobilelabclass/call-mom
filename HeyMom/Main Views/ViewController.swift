@@ -143,10 +143,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    @IBAction func testAnimation(_ sender: UIButton) {
-    }
-    
-    
     func timeStamp(date: Date) -> String {
         return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)
     }
