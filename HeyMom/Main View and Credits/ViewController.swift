@@ -30,6 +30,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        // Load saved settings in user defaults.
+        appMgr.loadDefaults()
+
+
+        // Handle call state changes.
         appMgr.callStateChanged = { callState in
             switch callState as CallState {
                 case .Disconnected:
@@ -39,8 +45,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
                     self.callDateLabel.text = self.timeStamp()
                 
                     if elapsed > 5 {
-                        self.appMgr.lastCallDuration = elapsed
-                        self.appMgr.lastCallDate = Date()
+//                        self.appMgr.lastCallDuration = elapsed
+//                        self.appMgr.lastCallDate = Date()
                     }
                 
                 case .Dialing:
@@ -55,22 +61,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
             }
         }
         
-
-
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let onboardingPageVC = sb.instantiateViewController(withIdentifier: "OnboardingPageVC") as! OnboardingPageViewController
-
-        self.view.addSubview(onboardingPageVC.view)
-        self.addChildViewController(onboardingPageVC)
-
-        onboardingPageVC.didFinishSetup = {
-            UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
-                onboardingPageVC.view.frame.origin = CGPoint(x: 0, y: onboardingPageVC.view.bounds.height)
-            }, completion: { (finished) in
-                onboardingPageVC.view.removeFromSuperview()
-                onboardingPageVC.removeFromParentViewController()
-            })
+        
+        // Run onboarding flow only when first entering the app.
+        if !appMgr.isOnboardingComplete {
+            startOnboardingFlow()
         }
+
+
 
         heartVizView.resetToFull()
 
@@ -110,6 +107,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         heartVizView.resetToFull()
     }
   
+    // Onboarding flow setup.
+    func startOnboardingFlow() {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let onboardingPageVC = sb.instantiateViewController(withIdentifier: "OnboardingPageVC") as! OnboardingPageViewController
+        
+        self.view.addSubview(onboardingPageVC.view)
+        self.addChildViewController(onboardingPageVC)
+        
+        onboardingPageVC.didFinishSetup = {
+            UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
+                onboardingPageVC.view.frame.origin = CGPoint(x: 0, y: onboardingPageVC.view.bounds.height)
+            }, completion: { (finished) in
+                onboardingPageVC.view.removeFromSuperview()
+                onboardingPageVC.removeFromParentViewController()
+            })
+        }
+    }
+    
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
         if let number = appMgr.telephoneNumber {

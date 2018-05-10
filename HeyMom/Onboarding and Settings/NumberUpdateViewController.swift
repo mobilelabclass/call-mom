@@ -9,6 +9,8 @@
 import UIKit
 import ContactsUI
 
+private let reuseIdentifier = "NumberTableViewCell"
+
 class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var backButton: UIButton!
@@ -18,8 +20,6 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var numberTextField: UITextField!
 
     @IBOutlet weak var tableView: UITableView!
-
-    private let reuseIdentifier = "NumberTableViewCell"
     
     var tableData = [String]()
 
@@ -44,7 +44,6 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
         // Show done button only when keyboard is visible.
         doneButton.isHidden = true
 
-
         numberTextField.delegate = self
     
         let color = UIColor.black.withAlphaComponent(0.45)
@@ -55,7 +54,6 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
  
         // Store number on view exit.
         appMgr.storeTelephoneNumber(numberTextField.text!)
@@ -89,11 +87,21 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 extension NumberUpdateViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
 
+        // Check if valid contact,
+        //
+
+        appMgr.momContact = contact
+
+        
         self.tableData.removeAll()
 
         let givenName = contact.givenName
         let familyName = contact.familyName
         for phoneNumber in contact.phoneNumbers {
+
+            appMgr.momPhoneNumber = phoneNumber
+
+
             let number = phoneNumber.value as CNPhoneNumber
             let label = phoneNumber.label
             let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label!)

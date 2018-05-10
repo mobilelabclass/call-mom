@@ -16,17 +16,18 @@ class FrequencyUpdateViewController: UIViewController {
     @IBOutlet weak var frequencySlider: UISlider!
     @IBOutlet weak var unitLabel: UILabel!
     
-    
     var didGoBack: (() -> ())?
     var didGoNext: (() -> ())?
     
     // Set to true if using VC from settings view.
     var isSettingsMode = false;
     
-    var dayCount: Int = 5
-    
-    var daySuffix: String {
-        return (dayCount > 1) ? "days" : "day"
+    var dayCount: Int! {
+        didSet {
+            dayCountLabel.text    = String(dayCount)
+            frequencySlider.value = Float(dayCount)
+            unitLabel.text        = dayCount > 1 ? "days" : "day"
+        }
     }
 
     // Get global singleton object.
@@ -45,13 +46,13 @@ class FrequencyUpdateViewController: UIViewController {
         }
         
         feedbackGenerator.prepare()
+    
+        // Get day count from settings.
+        dayCount = appMgr.dayCount
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Store day count on view exit.
-        appMgr.dayCount = dayCount
     }
 
     @IBAction func handleBackButton(_ sender: UIButton) {
@@ -61,42 +62,21 @@ class FrequencyUpdateViewController: UIViewController {
     @IBAction func handleNextButton(_ sender: UIButton) {
         self.didGoNext?()
     }
-    
-    
 
-
+    // Hooked up to touchUpInside and touchUpOutside.
+    @IBAction func handleFrequencySliderDidUpdate(_ sender: UISlider) {
+        // Store day count.
+        appMgr.dayCount = dayCount
+    }
+    
     @IBAction func handleFrequencySlider(_ sender: UISlider) {
         if dayCount == Int(sender.value) { return }
         
         dayCount = Int(sender.value)
-        dayCountLabel.text = "\(dayCount)"
-        unitLabel.text = "\(daySuffix)"
 
         // Provide haptic feedback
         feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.selectionChanged()
         feedbackGenerator.prepare()
-    }
-    
-    @IBAction func handleSwipeLeft(_ sender: UISwipeGestureRecognizer) {
-//        dayCount = max(1, dayCount - 1)
-//
-//        dayCountLabel.text = "\(dayCount) \(daySuffix)"
-//
-//        // Provide haptic feedback
-//        feedbackGenerator = UISelectionFeedbackGenerator()
-//        feedbackGenerator.selectionChanged()
-//        feedbackGenerator.prepare()
-    }
-    
-    @IBAction func handleSwipeRight(_ sender: UISwipeGestureRecognizer) {
-//        dayCount = min(30, dayCount + 1)
-//
-//        dayCountLabel.text = "\(dayCount) \(daySuffix)"
-//
-//        // Provide haptic feedback
-//        feedbackGenerator = UISelectionFeedbackGenerator()
-//        feedbackGenerator.selectionChanged()
-//        feedbackGenerator.prepare()
     }
 }

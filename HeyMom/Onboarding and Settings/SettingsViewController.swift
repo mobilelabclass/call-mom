@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 
 class SettingsViewController: UIViewController {
 
@@ -28,7 +29,14 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
  
         let numberString = appMgr.telephoneNumber?.absoluteString.replacingOccurrences(of: "tel://", with: "")
-        phoneNumberButton.setTitle(numberString, for: .normal)
+        
+        let contact = appMgr.momContact
+        let phone = appMgr.momPhoneNumber
+
+        
+        let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: (phone?.label)!)
+        
+        phoneNumberButton.setTitle(phone?.value.stringValue, for: .normal)
         
         let frequencyString = "\(appMgr.dayCount) \(daySuffix)"
         frequencyButton.setTitle(frequencyString, for: .normal)

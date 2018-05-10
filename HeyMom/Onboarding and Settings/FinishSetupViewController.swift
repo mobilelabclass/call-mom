@@ -13,6 +13,9 @@ class FinishSetupViewController: UIViewController {
     var didGoBack: (() -> ())?
     var didFinish: (() -> ())?
     
+    // Get global singleton object.
+    let appMgr = AppManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,6 +25,9 @@ class FinishSetupViewController: UIViewController {
     }
 
     @IBAction func handleFinishButton(_ sender: UIButton) {
+        // Set onboarding complete flag.
+        appMgr.isOnboardingComplete = true
+        
         self.didFinish?()
     }
 }
