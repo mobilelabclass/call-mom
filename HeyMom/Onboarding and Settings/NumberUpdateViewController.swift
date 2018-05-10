@@ -9,8 +9,6 @@
 import UIKit
 import ContactsUI
 
-private let reuseIdentifier = "NumberTableViewCell"
-
 class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var backButton: UIButton!
@@ -21,6 +19,8 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
 
+    private let reuseIdentifier = "NumberTableViewCell"
+    
     var tableData = [String]()
 
     var didGoBack: (() -> ())?
@@ -134,6 +134,5 @@ extension NumberUpdateViewController: UITableViewDelegate, UITableViewDataSource
         
         numberTextField.text = string
     }
-
 }
 

@@ -247,32 +247,21 @@
                                     <action selector="handleNextButton:" destination="m3J-NV-pjD" eventType="touchUpInside" id="PXC-ve-LKA"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-AD-3cx" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
-                                <rect key="frame" x="62.5" y="208.5" width="250" height="250"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="HYa-bZ-oot"/>
-                                    <constraint firstAttribute="width" constant="250" id="b2r-LN-BvB"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Onp-L1-4tA" firstAttribute="top" secondItem="K7Q-dP-m0N" secondAttribute="top" constant="80" id="2On-f8-JbK"/>
                             <constraint firstAttribute="bottom" secondItem="cTv-zH-46a" secondAttribute="bottom" id="Ayo-Fp-q6l"/>
-                            <constraint firstItem="3UN-AD-3cx" firstAttribute="centerY" secondItem="ljK-Rf-qtA" secondAttribute="centerY" id="BEc-Gg-Vp6"/>
                             <constraint firstItem="cTv-zH-46a" firstAttribute="width" secondItem="ljK-Rf-qtA" secondAttribute="width" id="OIy-ih-Cq6"/>
                             <constraint firstItem="KJS-f9-Hg4" firstAttribute="centerY" secondItem="K7Q-dP-m0N" secondAttribute="centerY" id="PvI-NO-Qzq"/>
                             <constraint firstItem="Onp-L1-4tA" firstAttribute="leading" secondItem="K7Q-dP-m0N" secondAttribute="leading" constant="20" id="QnD-UY-Vhn"/>
                             <constraint firstItem="cTv-zH-46a" firstAttribute="centerX" secondItem="K7Q-dP-m0N" secondAttribute="centerX" id="Wtc-hG-n3g"/>
                             <constraint firstItem="Onp-L1-4tA" firstAttribute="trailing" secondItem="K7Q-dP-m0N" secondAttribute="trailing" constant="-20" id="amy-tr-Ord"/>
-                            <constraint firstItem="3UN-AD-3cx" firstAttribute="centerX" secondItem="ljK-Rf-qtA" secondAttribute="centerX" id="sag-yO-Dcr"/>
                             <constraint firstItem="KJS-f9-Hg4" firstAttribute="centerX" secondItem="K7Q-dP-m0N" secondAttribute="centerX" id="uNI-9U-ebX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K7Q-dP-m0N"/>
                     </view>
                     <connections>
-                        <outlet property="heartVizView" destination="3UN-AD-3cx" id="GAz-rH-ESc"/>
                         <outlet property="waveImageView" destination="cTv-zH-46a" id="QXk-Qb-OBw"/>
                     </connections>
                 </viewController>
