@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     @IBOutlet weak var callDurationLabel: UILabel!
     @IBOutlet weak var heartVizView: HeartVizView!
 
+    // Contacts framework.
     var store = CNContactStore()
     var contacts: [CNContact] = []
     
@@ -25,8 +26,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
 
-    var aToggle = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,14 +40,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
             switch callState as CallState {
                 case .Disconnected:
                     print("currentCallState: Disconnected")
-                    let elapsed: Int = Int(CFAbsoluteTimeGetCurrent() - self.callTime)
-                    self.callDurationLabel.text = "CallTime: \(elapsed) seconds"
-                    self.callDateLabel.text = self.timeStamp()
-                
-                    if elapsed > 5 {
-//                        self.appMgr.lastCallDuration = elapsed
-//                        self.appMgr.lastCallDate = Date()
-                    }
+                    self.callDidDisconnect()
                 
                 case .Dialing:
                     print("currentCallState: Dialing")
@@ -57,7 +50,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
 
                 case .Connected:
                     print("currentCallState: Connected")
-                    self.callTime = CFAbsoluteTimeGetCurrent()
+                    self.callDidConnect()
             }
         }
         
@@ -68,7 +61,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         }
 
 
-
+        // Initialize heart visualization.
         heartVizView.resetToFull()
 
 
@@ -77,6 +70,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         })
 
         findContactsWithName(name: "mom")
+
+        
+        print(appMgr.callDateLog)
+        print(appMgr.callDurationLog)
     }
     
 
@@ -107,6 +104,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         heartVizView.resetToFull()
     }
   
+
+    func callDidConnect() {
+        self.callTime = CFAbsoluteTimeGetCurrent()
+    }
+
+    func callDidDisconnect() {
+
+        let currentDate = Date()
+
+        let elapsed: Int = Int(CFAbsoluteTimeGetCurrent() - callTime)
+        callDurationLabel.text = "CallTime: \(elapsed) seconds"
+        callDateLabel.text = timeStamp(date: currentDate)
+        
+        if elapsed > 2 {
+            appMgr.saveCallLog(date: currentDate, duration: elapsed)
+        }
+    }
+    
     // Onboarding flow setup.
     func startOnboardingFlow() {
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -127,13 +142,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
-        if let number = appMgr.telephoneNumber {
-            UIApplication.shared.open(number, options: [:], completionHandler: nil)
+        if let numberURL = appMgr.momPhoneNumberURL {
+            UIApplication.shared.open(numberURL, options: [:], completionHandler: nil)
         }
     }
     
-    func timeStamp() -> String {
-        return DateFormatter.localizedString(from: NSDate() as Date, dateStyle: .medium, timeStyle: .short)
+    func timeStamp(date: Date) -> String {
+        return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

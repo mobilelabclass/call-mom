@@ -12,7 +12,6 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
 
     var didFinishSetup: (() -> ())?
 
-    
     // Lazy loader for instantiating view controllers.
     lazy var viewControllerList:[UIViewController] = {
         
@@ -55,7 +54,6 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
             self?.didFinishSetup?()
         }
 
-        
         return [welcomeVC, numberUpdateVC, frequencyUpdateVC, finishSetupVC]
     }()
 

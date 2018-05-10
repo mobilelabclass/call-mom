@@ -27,13 +27,9 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
- 
-        let numberString = appMgr.telephoneNumber?.absoluteString.replacingOccurrences(of: "tel://", with: "")
         
         let contact = appMgr.momContact
         let phone = appMgr.momPhoneNumber
-
-        
         let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: (phone?.label)!)
         
         phoneNumberButton.setTitle(phone?.value.stringValue, for: .normal)

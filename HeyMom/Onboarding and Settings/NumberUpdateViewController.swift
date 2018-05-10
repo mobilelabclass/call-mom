@@ -54,9 +54,6 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
- 
-        // Store number on view exit.
-        appMgr.storeTelephoneNumber(numberTextField.text!)
     }
     
     @IBAction func handleBackButton(_ sender: UIButton) {

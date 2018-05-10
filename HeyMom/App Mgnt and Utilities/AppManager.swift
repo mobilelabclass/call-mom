@@ -47,11 +47,11 @@ class AppManager {
     }
     
     var lastCallDuration: Int? {
-        get { return callDurationLog.last }
+        return callDurationLog.last
     }
 
     var lastCallDate: Date? {
-        get { return callDateLog.last }
+        return callDateLog.last
     }
 
     // Reminder frequency in days.
@@ -79,11 +79,24 @@ class AppManager {
         }
     }
 
+    var momPhoneNumberURL: URL? {
+        let n = momPhoneNumber?.value.stringValue
+        
+        guard let numberStripped = n?.replacingOccurrences(of: "\\D", with: "", options: .regularExpression) else {
+            print("ERROR: Stored number invalid.")
+            return nil
+        }
+        
+        guard let numberURL = URL(string: "tel://" + numberStripped) else {
+            print("ERROR: Stored number URL.")
+            return nil
+        }
+        
+        return numberURL
+    }
+    
     private(set) var callDateLog = [Date]()
     private(set) var callDurationLog = [Int]()
-
-    // Number for making call.
-    private(set) var telephoneNumber: URL?
 
     
     // Callback method for call state changed.
@@ -94,10 +107,18 @@ class AppManager {
             self.callStateChanged?(currentCallState)
         }
     }
-    
-    
-    func loadDefaults() {
 
+
+    func saveCallLog(date: Date, duration: Int ) {
+        callDateLog.append(date)
+        callDurationLog.append(duration)
+        
+        defaults.set(callDateLog, forKey: callDateLogKey)
+        defaults.set(callDurationLog, forKey: callDurationLogKey)
+    }
+
+
+    func loadDefaults() {
         isOnboardingComplete = defaults.bool(forKey: isOnboardingCompleteKey)
 
         callDateLog = defaults.object(forKey: callDateLogKey) as? [Date] ?? [Date]()
@@ -113,26 +134,6 @@ class AppManager {
         if let momPhoneNumberData = defaults.object(forKey: momPhoneNumberKey) as? Data {
             momPhoneNumber = NSKeyedUnarchiver.unarchiveObject(with: momPhoneNumberData) as? CNLabeledValue<CNPhoneNumber>
         }
-    }
-    
-    func saveCallLog(date: Date, duration: Int ) {
-        callDateLog.append(date)
-        callDurationLog.append(duration)
-        
-        defaults.set(callDateLog, forKey: callDateLogKey)
-        defaults.set(callDurationLog, forKey: callDurationLogKey)
-    }
-    
-    func storeTelephoneNumber(_ number: String) {
-        
-        let numberString = number.replacingOccurrences(of: "\\D", with: "", options: .regularExpression)
-        
-        guard let number = URL(string: "tel://" + numberString) else {
-            print("ERROR: Number not valid")
-            return
-        }
-
-        self.telephoneNumber = number
     }
 
 }
