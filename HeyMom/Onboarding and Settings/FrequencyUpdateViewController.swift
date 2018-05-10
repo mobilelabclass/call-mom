@@ -16,6 +16,7 @@ class FrequencyUpdateViewController: UIViewController {
     @IBOutlet weak var frequencySlider: UISlider!
     @IBOutlet weak var unitLabel: UILabel!
     
+    
     var didGoBack: (() -> ())?
     var didGoNext: (() -> ())?
     
@@ -60,6 +61,8 @@ class FrequencyUpdateViewController: UIViewController {
     @IBAction func handleNextButton(_ sender: UIButton) {
         self.didGoNext?()
     }
+    
+    
 
 
     @IBAction func handleFrequencySlider(_ sender: UISlider) {

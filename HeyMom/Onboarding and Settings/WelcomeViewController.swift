@@ -9,9 +9,6 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
-    @IBOutlet weak var heartVizView: HeartVizView!
-
     @IBOutlet weak var waveImageView: UIImageView!
     
     var didGoNext: (() -> ())?
@@ -33,8 +30,6 @@ class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        heartVizView.reverseAnimation()
         
         let seq = [
             wave0,
