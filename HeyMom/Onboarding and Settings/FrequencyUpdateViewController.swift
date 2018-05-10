@@ -51,7 +51,7 @@ class FrequencyUpdateViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         // Store day count on view exit.
-        appMgr.storeDayCount(dayCount)
+        appMgr.dayCount = dayCount
     }
 
     @IBAction func handleBackButton(_ sender: UIButton) {

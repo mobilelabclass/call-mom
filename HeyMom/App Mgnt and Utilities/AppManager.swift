@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Contacts
 
 enum CallState {
     case Disconnected
@@ -25,15 +26,37 @@ class AppManager {
     // Number for making call.
     private(set) var telephoneNumber: URL?
 
+    // Standard user defaults.
+    let defaults = UserDefaults.standard
+    
+    
     // Reminder frequency in days.
-    private(set) var dayCount: Int = 5
+    var dayCount: Int = 5
     
 
-    var lastCallDuration: Int = 0
+    var lastCallDuration: Int = 0 {
+        didSet {
+            
+        }
+    }
 
-    var lastCallDate: Date?
+    var lastCallDate: Date? {
+        didSet {
+            
+        }
+    }
 
-
+    var momContact: CNContact? {
+        didSet {
+            
+        }
+    }
+    
+    var momPhoneNumber: CNLabeledValue<CNPhoneNumber>? {
+        didSet {
+        }
+    }
+    
     // Callback method for call state changed.
     var callStateChanged: ((CallState) -> ())?
 
@@ -42,6 +65,9 @@ class AppManager {
             self.callStateChanged?(currentCallState)
         }
     }
+    
+    
+    
     
     func storeTelephoneNumber(_ number: String) {
         
@@ -53,10 +79,6 @@ class AppManager {
         }
 
         self.telephoneNumber = number
-    }
-
-    func storeDayCount(_ dayCount: Int) {
-        self.dayCount = dayCount
     }
 
 }
