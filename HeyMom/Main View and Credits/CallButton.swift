@@ -23,6 +23,4 @@ class CallButton: UIButton {
         layer.cornerRadius = self.bounds.width / 2.0
         clipsToBounds = true
     }
-    
-    
 }
