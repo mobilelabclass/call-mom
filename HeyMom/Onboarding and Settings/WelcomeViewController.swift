@@ -9,6 +9,7 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
+
     @IBOutlet weak var waveImageView: UIImageView!
     
     var didGoNext: (() -> ())?

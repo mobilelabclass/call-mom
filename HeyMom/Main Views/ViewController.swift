@@ -8,12 +8,11 @@
 
 import UIKit
 import Contacts
-import UserNotifications
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotificationCenterDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var callDateLabel: UILabel!
-    @IBOutlet weak var callDurationLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var heartVizView: HeartVizView!
 
     // Contacts framework.
@@ -21,7 +20,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     var contacts: [CNContact] = []
     
     // Track call time.
-    var callTime: CFAbsoluteTime!
+    var callStartTime: CFAbsoluteTime!
     
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
@@ -65,10 +64,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         heartVizView.resetToFull()
 
 
-        //requesting for authorization
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
-        })
-
         findContactsWithName(name: "mom")
 
         
@@ -76,49 +71,26 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         print(appMgr.callDurationLog)
     }
     
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
-            self?.heartVizView.animateTo(0.4)
-        }
-        
-
-        
-//        if let lastCallDate = self.appMgr.lastCallDate {
-//
-//            print(lastCallDate)
-//            let sinceLastCall =  Date().timeIntervalSince(lastCallDate)
-//            print(sinceLastCall)
-//
-//            print(">>>>>>>>>>>>>>>> \(sinceLastCall)")
-//
-//            heartVizView.reverseAnimation()
-//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-        heartVizView.resetToFull()
+    
+        resetHeartViz()
     }
   
 
     func callDidConnect() {
-        self.callTime = CFAbsoluteTimeGetCurrent()
+        callStartTime = CFAbsoluteTimeGetCurrent()
     }
 
     func callDidDisconnect() {
+        let callDuration = Int(CFAbsoluteTimeGetCurrent() - callStartTime)
 
-        let currentDate = Date()
-
-        let elapsed: Int = Int(CFAbsoluteTimeGetCurrent() - callTime)
-        callDurationLabel.text = "CallTime: \(elapsed) seconds"
-        callDateLabel.text = timeStamp(date: currentDate)
-        
-        if elapsed > 2 {
-            appMgr.saveCallLog(date: currentDate, duration: elapsed)
+        if appMgr.isMinimumCallTime(callDuration) {
+            appMgr.saveCallLog(date: Date(), duration: callDuration)
         }
     }
     
@@ -127,8 +99,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let onboardingPageVC = sb.instantiateViewController(withIdentifier: "OnboardingPageVC") as! OnboardingPageViewController
         
-        self.view.addSubview(onboardingPageVC.view)
-        self.addChildViewController(onboardingPageVC)
+        view.addSubview(onboardingPageVC.view)
+        addChildViewController(onboardingPageVC)
         
         onboardingPageVC.didFinishSetup = {
             UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn, animations: {
@@ -147,50 +119,37 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
         }
     }
     
+    func resetHeartViz() {
+        // Initialize heart visualization.
+        heartVizView.resetToFull()
+    }
+    
+    func animateHeartViz() {
+        resetHeartViz()
+        
+        if let sinceLastCall = appMgr.sinceLastCall {
+            print("s:\(sinceLastCall.seconds) m:\(sinceLastCall.minutes) h:\(sinceLastCall.hours) d:\(sinceLastCall.days) ")
+            
+            titleLabel.text = "\(sinceLastCall.minutes) Minutes"
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
+                guard let strongSelf = self else { return }
+                
+                print("goal %: \(strongSelf.appMgr.goalPercentage)")
+                
+                strongSelf.heartVizView.animateTo(strongSelf.appMgr.goalPercentage)
+            }
+        }
+    }
+    
+    @IBAction func testAnimation(_ sender: UIButton) {
+    }
+    
+    
     func timeStamp(date: Date) -> String {
         return DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)
     }
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        //displaying the ios local notification when app is in foreground
-        completionHandler([.alert, .badge, .sound])
-    }
-
-    
-    @IBAction func handleTestNotification(_ sender: UIButton) {
-         //creating the notification content
-         let content = UNMutableNotificationContent()
-         
-         //adding title, subtitle, body and badge
-         content.title = "Reminder to call your mom"
-         //        content.subtitle = ""
-         content.body = "It's been 5 days since you called"
-         content.sound = UNNotificationSound.default()
-         content.badge = 0
-         
-         
-         //        let alertDays = 3
-         //        let daySeconds = 86400
-         //        let alertSeconds = Double(alertDays * daySeconds)
-         
-         
-//         let alertSeconds = Double(1 * 60)
-        
-         
-         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-         
-         //getting the notification request
-         let request = UNNotificationRequest(identifier: "HeyMom", content: content, trigger: trigger)
-         
-         UNUserNotificationCenter.current().delegate = self
-         
-         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-         
-         //adding the notification to notification center
-         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
-    
     
     func findContactsWithName(name: String) {
         checkAccessStatus(completionHandler: { (accessGranted) -> Void in

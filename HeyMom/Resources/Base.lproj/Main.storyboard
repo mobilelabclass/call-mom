@@ -51,13 +51,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Called" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Off-50-jVe">
-                                <rect key="frame" x="16" y="56" width="382" height="55.666666666666657"/>
+                                <rect key="frame" x="16" y="56" width="382" height="55.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="since last called" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDc-N1-xnk">
-                                <rect key="frame" x="16" y="115.66666666666667" width="382" height="20.000000000000014"/>
+                                <rect key="frame" x="16" y="115.33333333333333" width="382" height="19.999999999999986"/>
                                 <fontDescription key="fontDescription" name="Riposte-Lazer" family="Riposte" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                                     <constraint firstAttribute="height" constant="44" id="eG7-q2-np7"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="handleTestNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K9j-xb-YPP"/>
+                                    <action selector="testAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zfc-0K-3LA"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIC-9g-i5h" customClass="HeartVizView" customModule="HeyMom" customModuleProvider="target">
@@ -135,9 +135,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="callDateLabel" destination="Off-50-jVe" id="3iR-eK-sHz"/>
-                        <outlet property="callDurationLabel" destination="VDc-N1-xnk" id="y7z-yj-SdT"/>
                         <outlet property="heartVizView" destination="OIC-9g-i5h" id="p7g-hk-bY2"/>
+                        <outlet property="subtitleLabel" destination="VDc-N1-xnk" id="b36-Ji-OWr"/>
+                        <outlet property="titleLabel" destination="Off-50-jVe" id="LzD-rk-ugN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -443,7 +443,6 @@
         <!--View Controller-->
         <scene sceneID="uj0-fh-3T9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4aw-nl-Lgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="c67-XP-WpX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="10Q-kl-b5X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -494,6 +493,7 @@
                         <viewLayoutGuide key="safeArea" id="TcW-AL-opR"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4aw-nl-Lgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1772" y="1856"/>
         </scene>
@@ -543,7 +543,7 @@
                                 <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="100"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="28" minimumValueImage="big_heart" maximumValueImage="small_heart" translatesAutoresizingMaskIntoConstraints="NO" id="DyD-xN-FPe">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="120" minimumValueImage="big_heart" maximumValueImage="small_heart" translatesAutoresizingMaskIntoConstraints="NO" id="DyD-xN-FPe">
                                 <rect key="frame" x="18" y="475.33333333333331" width="378" height="32"/>
                                 <color key="minimumTrackTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -559,6 +559,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exi-gw-ym3">
+                                <rect key="frame" x="57" y="100" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="testNotification:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="j8F-91-RlC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>

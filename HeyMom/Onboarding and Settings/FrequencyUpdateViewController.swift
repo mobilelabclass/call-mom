@@ -26,7 +26,7 @@ class FrequencyUpdateViewController: UIViewController {
         didSet {
             dayCountLabel.text    = String(dayCount)
             frequencySlider.value = Float(dayCount)
-            unitLabel.text        = dayCount > 1 ? "days" : "day"
+            unitLabel.text        = dayCount > 1 ? "minutes" : "minute"
         }
     }
 
@@ -78,5 +78,9 @@ class FrequencyUpdateViewController: UIViewController {
         feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.selectionChanged()
         feedbackGenerator.prepare()
+    }
+
+    @IBAction func testNotification(_ sender: UIButton) {
+        appMgr.testNotification()
     }
 }

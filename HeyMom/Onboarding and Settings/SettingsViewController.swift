@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     let appMgr = AppManager.sharedInstance
     
     var daySuffix: String {
-        return (appMgr.dayCount > 1) ? "days" : "day"
+        return (appMgr.dayCount > 1) ? "minutes" : "minute"
     }
     
     override func viewDidLoad() {
@@ -53,6 +53,4 @@ class SettingsViewController: UIViewController {
             }
         }
     }
-    
-
 }

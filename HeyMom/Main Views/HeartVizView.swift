@@ -58,13 +58,13 @@ class HeartVizView: UIView {
     }
 
     // Animate heart to percentage full.
-    func animateTo(_ toValue: CGFloat ) {
+    func animateTo(_ toValue: Float) {
         shapeLayer.removeAllAnimations()
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
 
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.duration = 1.0
+        animation.duration = CFTimeInterval((1.0 - toValue) * 1.5)
         
         animation.fromValue = shapeLayer.presentation()?.strokeEnd
         animation.toValue = toValue

@@ -115,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				6ACE7E8720A1EC870012F639 /* App Mgnt and Utilities */,
-				6ACE7E8620A1EC620012F639 /* Main View and Credits */,
+				6ACE7E8620A1EC620012F639 /* Main Views */,
 				6ACE7E8520A1EC290012F639 /* Onboarding and Settings */,
 				6AC6157720864FFD009A0900 /* Resources */,
 			);
@@ -166,7 +166,7 @@
 			path = "Onboarding and Settings";
 			sourceTree = "<group>";
 		};
-		6ACE7E8620A1EC620012F639 /* Main View and Credits */ = {
+		6ACE7E8620A1EC620012F639 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
 				6AC615652086469C009A0900 /* ViewController.swift */,
@@ -174,7 +174,7 @@
 				6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */,
 				6A5D59BC20A33DE000B142BC /* CreditsViewController.swift */,
 			);
-			path = "Main View and Credits";
+			path = "Main Views";
 			sourceTree = "<group>";
 		};
 		6ACE7E8720A1EC870012F639 /* App Mgnt and Utilities */ = {

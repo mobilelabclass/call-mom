@@ -8,6 +8,7 @@
 
 import Foundation
 import Contacts
+import UserNotifications
 
 enum CallState {
     case Disconnected
@@ -17,48 +18,68 @@ enum CallState {
 }
 
 
+// Mininum call time in seconds to be considered a "Call" to Mom.
+private let minCallTime: Int = 2
+
 // These are paired arrays.
 // Should make into struct but saving custom objects in user defaults is a pain.
 private let callDateLogKey     = "CALL_DATE_LOG"
 private let callDurationLogKey = "CALL_DURATION_LOG"
 
-private let dayCountKey        = "DAY_COUNT"
-private let momContactKey      = "MOM_CONTACT"
-private let momPhoneNumberKey  = "MOM_PHONE_NUMBER_KEY"
-
+private let dayCountKey             = "DAY_COUNT"
+private let momContactKey           = "MOM_CONTACT"
+private let momPhoneNumberKey       = "MOM_PHONE_NUMBER_KEY"
 private let isOnboardingCompleteKey = "IS_ONBOARDING_COMPLETE"
 
 
-class AppManager {
+class AppManager: NSObject {
     // Declare this class as a singleton object.
     static let sharedInstance = AppManager()
 
     // Prevents others from using the default '()' initializer for this class.
-    private init() {}
-
+    private override init() {
+        super.init()
+        
+        // Setup local notification for reminders.
+        self.setupLocalNotification()
+    }
+    
     // Standard user defaults.
     let defaults = UserDefaults.standard
-
+    
     // Flag for onboarding status.
     var isOnboardingComplete = false {
-        didSet {
-            defaults.set(isOnboardingComplete, forKey: isOnboardingCompleteKey)
-        }
+        didSet { defaults.set(isOnboardingComplete, forKey: isOnboardingCompleteKey) }
     }
     
     var lastCallDuration: Int? {
         return callDurationLog.last
     }
 
-    var lastCallDate: Date? {
-        return callDateLog.last
+    var sinceLastCall: (seconds: Int, minutes: Int, hours: Int, days: Int)? {
+        guard let lastCallDate = callDateLog.last else { return nil }
+        
+        let sinceLastCall = Date().timeIntervalSince(lastCallDate)
+        
+        return  (Int(sinceLastCall), Int(sinceLastCall / 60), Int(sinceLastCall / 3600), Int(sinceLastCall / 86400))
     }
-
+    
     // Reminder frequency in days.
     var dayCount: Int = 5 {
-        didSet {
-            defaults.set(dayCount, forKey: dayCountKey)
+        didSet { defaults.set(dayCount, forKey: dayCountKey) }
+    }
+    
+    
+    var goalPercentage: Float {
+
+        // TODO: Make this to days.
+        if let sinceLastCall = self.sinceLastCall {
+            let sinceDiff = max(dayCount - sinceLastCall.minutes, 0)
+
+            return Float(sinceDiff) / Float(dayCount)
         }
+
+        return 0
     }
     
     var momContact: CNContact? {
@@ -109,6 +130,12 @@ class AppManager {
     }
 
 
+    // Check if mininum call time.
+    func isMinimumCallTime(_ seconds: Int) -> Bool {
+        return (seconds > minCallTime) ? true : false
+    }
+    
+    // Save call date and duration.
     func saveCallLog(date: Date, duration: Int ) {
         callDateLog.append(date)
         callDurationLog.append(duration)
@@ -117,7 +144,7 @@ class AppManager {
         defaults.set(callDurationLog, forKey: callDurationLogKey)
     }
 
-
+    // Loads data from user defaults.
     func loadDefaults() {
         isOnboardingComplete = defaults.bool(forKey: isOnboardingCompleteKey)
 
@@ -136,5 +163,58 @@ class AppManager {
         }
     }
 
+}
+
+
+// Methods for local notifications.
+extension AppManager: UNUserNotificationCenterDelegate {
+    
+    func setupLocalNotification() {
+        // Request authorization for local notification.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge],
+                                                                completionHandler: { didAllow, error in
+        })
+
+        UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func testNotification() {
+        //creating the notification content
+        let content = UNMutableNotificationContent()
+        
+        //adding title, subtitle, body and badge
+        content.title = "Reminder to call your mom"
+        //        content.subtitle = ""
+        content.body = "It's been 5 days since you called"
+        content.sound = UNNotificationSound.default()
+        content.badge = 0
+        
+        
+        //        let alertDays = 3
+        //        let daySeconds = 86400
+        //        let alertSeconds = Double(alertDays * daySeconds)
+        
+        
+        //         let alertSeconds = Double(1 * 60)
+        
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        //getting the notification request
+        let request = UNNotificationRequest(identifier: "HeyMom", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        //adding the notification to notification center
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+
+    // UNUserNotificationCenterDelegate method.
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        // Displaying the ios local notification when app is in foreground.
+        completionHandler([.alert, .badge, .sound])
+    }
 }
 
