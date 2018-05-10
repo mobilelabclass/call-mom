@@ -6,6 +6,7 @@ target 'HeyMom' do
   use_frameworks!
 
   # Pods for HeyMom
+  pod 'pop', :git => 'https://github.com/facebook/pop.git'
 
 
 
