@@ -37,6 +37,7 @@
 		6AF1C04420A49ADE006F29DB /* CallLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF1C04320A49ADE006F29DB /* CallLogTableViewCell.swift */; };
 		6AF2F47E2098CD2C00380C81 /* HeartVizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */; };
 		720232DCA99BF9007745DFF2 /* Pods_HeyMom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0727CE06D0A458D51E545B4A /* Pods_HeyMom.framework */; };
+		9ED3596F20A3FA1B00CBD612 /* HeartVizDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3596E20A3FA1B00CBD612 /* HeartVizDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		6AF1C04320A49ADE006F29DB /* CallLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallLogTableViewCell.swift; sourceTree = "<group>"; };
 		6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartVizView.swift; sourceTree = "<group>"; };
 		6C5E6B9BB7DF0783777CE49E /* Pods-HeyMom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeyMom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeyMom/Pods-HeyMom.debug.xcconfig"; sourceTree = "<group>"; };
+		9ED3596E20A3FA1B00CBD612 /* HeartVizDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartVizDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				6AC615652086469C009A0900 /* ViewController.swift */,
 				6AC61586208658D2009A0900 /* CallButton.swift */,
 				6AF2F47D2098CD2C00380C81 /* HeartVizView.swift */,
+				9ED3596E20A3FA1B00CBD612 /* HeartVizDemoView.swift */,
 				6A5D59BC20A33DE000B142BC /* CreditsViewController.swift */,
 				6AF1C04120A49AA5006F29DB /* CallLogTableViewController.swift */,
 				6AF1C04320A49ADE006F29DB /* CallLogTableViewCell.swift */,
@@ -212,6 +215,7 @@
 				6AC6155C2086469C009A0900 /* Sources */,
 				6AC6155D2086469C009A0900 /* Frameworks */,
 				6AC6155E2086469C009A0900 /* Resources */,
+				4CAB5D52F735E44531BE8BC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,6 +283,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4CAB5D52F735E44531BE8BC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HeyMom/Pods-HeyMom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeyMom/Pods-HeyMom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F9BBD2E2F8943D2D340D93A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,6 +341,7 @@
 				6ACE7E6620A0BEB70012F639 /* OnboardingPageViewController.swift in Sources */,
 				6AF2F47E2098CD2C00380C81 /* HeartVizView.swift in Sources */,
 				6AC61587208658D2009A0900 /* CallButton.swift in Sources */,
+				9ED3596F20A3FA1B00CBD612 /* HeartVizDemoView.swift in Sources */,
 				6AC6158920866B45009A0900 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,10 +490,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HY8AUX8L27;
 				INFOPLIST_FILE = "$(SRCROOT)/HeyMom/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = studio.linebreak.HeyMom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -486,10 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HY8AUX8L27;
 				INFOPLIST_FILE = "$(SRCROOT)/HeyMom/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = studio.linebreak.HeyMom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
