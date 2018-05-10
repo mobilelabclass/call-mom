@@ -15,8 +15,16 @@ class CallLogTableViewController: UITableViewController {
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
     
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setup date formatter.
+        dateFormatter.locale     = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "EEEE h:mm a 'on' MMMM dd, yyyy"
+        dateFormatter.amSymbol   = "AM"
+        dateFormatter.pmSymbol   = "PM"
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,10 +38,10 @@ class CallLogTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! CallLogTableViewCell
         
-        let date = appMgr.callDateLog.reversed()[indexPath.row].description
+        let date     = appMgr.callDateLog.reversed()[indexPath.row]
         let duration = "\(appMgr.callDurationLog.reversed()[indexPath.row]) seconds"
         
-        cell.callDateLabel.text     = date
+        cell.callDateLabel.text     =  dateFormatter.string(from: date)
         cell.callDurationLabel.text = duration
 
         return cell

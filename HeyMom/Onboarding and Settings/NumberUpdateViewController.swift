@@ -11,12 +11,11 @@ import ContactsUI
 
 private let reuseIdentifier = "NumberTableViewCell"
 
-class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
+class NumberUpdateViewController: UIViewController {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
 
-    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var numberTextField: UITextField!
 
     @IBOutlet weak var tableView: UITableView!
@@ -40,12 +39,7 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
             backButton.isHidden = true
             nextButton.isHidden = true
         }
-        
-        // Show done button only when keyboard is visible.
-        doneButton.isHidden = true
 
-        numberTextField.delegate = self
-    
         let color = UIColor.black.withAlphaComponent(0.45)
         numberTextField.attributedPlaceholder =
             NSAttributedString(string: "Mom's Number",
@@ -62,15 +56,6 @@ class NumberUpdateViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func handleNextButton(_ sender: UIButton) {
         self.didGoNext?()
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        doneButton.isHidden = false
-    }
-
-    @IBAction func handleDoneButton(_ sender: UIButton) {
-        view.endEditing(true)
-        doneButton.isHidden = true
     }
 
     @IBAction func handleContactsButton(_ sender: UIButton) {

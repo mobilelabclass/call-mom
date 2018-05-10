@@ -21,6 +21,9 @@ enum CallState {
 // Mininum call time in seconds to be considered a "Call" to Mom.
 private let minCallTime: Int = 2
 
+// Initial reminder frequency.
+private let initialDayCount: Int = 5
+
 // These are paired arrays.
 // Should make into struct but saving custom objects in user defaults is a pain.
 private let callDateLogKey     = "CALL_DATE_LOG"
@@ -39,9 +42,6 @@ class AppManager: NSObject {
     // Prevents others from using the default '()' initializer for this class.
     private override init() {
         super.init()
-        
-        // Setup local notification for reminders.
-        self.setupLocalNotification()
     }
     
     // Standard user defaults.
@@ -65,10 +65,9 @@ class AppManager: NSObject {
     }
     
     // Reminder frequency in days.
-    var dayCount: Int = 5 {
+    var dayCount: Int = initialDayCount {
         didSet { defaults.set(dayCount, forKey: dayCountKey) }
     }
-    
     
     var goalPercentage: Float {
 
@@ -148,18 +147,21 @@ class AppManager: NSObject {
     func loadDefaults() {
         isOnboardingComplete = defaults.bool(forKey: isOnboardingCompleteKey)
 
-        callDateLog = defaults.object(forKey: callDateLogKey) as? [Date] ?? [Date]()
-
-        callDurationLog = defaults.object(forKey: callDurationLogKey) as? [Int] ?? [Int]()
-        
-        dayCount = defaults.integer(forKey: dayCountKey)
-        
-        if let momContactData = defaults.object(forKey: momContactKey) as? Data {
-            momContact = NSKeyedUnarchiver.unarchiveObject(with: momContactData) as? CNContact
-        }
-        
-        if let momPhoneNumberData = defaults.object(forKey: momPhoneNumberKey) as? Data {
-            momPhoneNumber = NSKeyedUnarchiver.unarchiveObject(with: momPhoneNumberData) as? CNLabeledValue<CNPhoneNumber>
+        // Load settings once onboarding is complete.
+        if isOnboardingComplete {
+            callDateLog = defaults.object(forKey: callDateLogKey) as? [Date] ?? [Date]()
+            
+            callDurationLog = defaults.object(forKey: callDurationLogKey) as? [Int] ?? [Int]()
+            
+            dayCount = defaults.integer(forKey: dayCountKey)
+            
+            if let momContactData = defaults.object(forKey: momContactKey) as? Data {
+                momContact = NSKeyedUnarchiver.unarchiveObject(with: momContactData) as? CNContact
+            }
+            
+            if let momPhoneNumberData = defaults.object(forKey: momPhoneNumberKey) as? Data {
+                momPhoneNumber = NSKeyedUnarchiver.unarchiveObject(with: momPhoneNumberData) as? CNLabeledValue<CNPhoneNumber>
+            }
         }
     }
 

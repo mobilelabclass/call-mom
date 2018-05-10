@@ -45,10 +45,11 @@ class FrequencyUpdateViewController: UIViewController {
             nextButton.isHidden = true
         }
         
-        feedbackGenerator.prepare()
-    
         // Get day count from settings.
         dayCount = appMgr.dayCount
+        
+        // Prepare feedback.
+        feedbackGenerator.prepare()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,12 +76,6 @@ class FrequencyUpdateViewController: UIViewController {
         dayCount = Int(sender.value)
 
         // Provide haptic feedback
-        feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.selectionChanged()
-        feedbackGenerator.prepare()
-    }
-
-    @IBAction func testNotification(_ sender: UIButton) {
-        appMgr.testNotification()
     }
 }

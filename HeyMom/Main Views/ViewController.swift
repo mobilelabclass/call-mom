@@ -14,25 +14,28 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var heartVizView: HeartVizView!
-
+    
     // Contacts framework.
     var store = CNContactStore()
     var contacts: [CNContact] = []
     
     // Track call time.
-    var callStartTime: CFAbsoluteTime!
+    var callStartTime: Date?
+
+    // Track frequency day count.
+    var currentDayCount = 0
     
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
+
+    private var fgAppNotification: NSObjectProtocol?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        // Load saved settings in user defaults.
+        // Load app settings
         appMgr.loadDefaults()
-
 
         // Handle call state changes.
         appMgr.callStateChanged = { callState in
@@ -53,44 +56,69 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-        
+
         // Run onboarding flow only when first entering the app.
         if !appMgr.isOnboardingComplete {
             startOnboardingFlow()
         }
 
 
-        // Initialize heart visualization.
-        heartVizView.resetToFull()
+        // Initialize heart visualization and animate.
+        resetHeartViz()
+        animateHeartViz()
 
 
-        findContactsWithName(name: "mom")
-
+        // Save current day count.
+        currentDayCount = appMgr.dayCount
         
-        print(appMgr.callDateLog)
-        print(appMgr.callDurationLog)
+
+        // Run animation when app enters the forground.
+        fgAppNotification = NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground,
+                                                                   object: nil,
+                                                                   queue: .main)
+        { [weak self] (notification) in
+            self?.resetHeartViz()
+            self?.animateHeartViz()
+        }
+
+        // Testing
+        findContactsWithName(name: "mom")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        // Need to reset visualization of day count updated from settings.
+        if currentDayCount != appMgr.dayCount {
+            currentDayCount = appMgr.dayCount
+
+            heartVizView.animateTo(1.0)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    
-        resetHeartViz()
     }
   
-
+    deinit {
+        if let notification = fgAppNotification {
+            NotificationCenter.default.removeObserver(notification)
+        }
+    }
+        
     func callDidConnect() {
-        callStartTime = CFAbsoluteTimeGetCurrent()
+        callStartTime = Date()
     }
 
     func callDidDisconnect() {
-        let callDuration = Int(CFAbsoluteTimeGetCurrent() - callStartTime)
+        guard let startTime = self.callStartTime else { return }
 
-        if appMgr.isMinimumCallTime(callDuration) {
-            appMgr.saveCallLog(date: Date(), duration: callDuration)
+        // Save call start time and duration if minimum time reached.
+        let duration = Int(Date().timeIntervalSince(startTime))
+        if appMgr.isMinimumCallTime(duration) {
+            appMgr.saveCallLog(date: startTime, duration: duration)
+
+            self.animateHeartViz()
         }
     }
     
@@ -125,21 +153,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func animateHeartViz() {
-        resetHeartViz()
+        guard let sinceLastCall = appMgr.sinceLastCall else { return }
+
+        print("s:\(sinceLastCall.seconds) m:\(sinceLastCall.minutes) h:\(sinceLastCall.hours) d:\(sinceLastCall.days) ")
         
-        if let sinceLastCall = appMgr.sinceLastCall {
-            print("s:\(sinceLastCall.seconds) m:\(sinceLastCall.minutes) h:\(sinceLastCall.hours) d:\(sinceLastCall.days) ")
+        titleLabel.text = "\(sinceLastCall.minutes) Minutes"
+        
+        // Hide or show label if there is call history.
+        subtitleLabel.isHidden = appMgr.sinceLastCall == nil ? true : false
+
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
+            guard let strongSelf = self else { return }
             
-            titleLabel.text = "\(sinceLastCall.minutes) Minutes"
+            print("goal %: \(strongSelf.appMgr.goalPercentage)")
             
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
-                guard let strongSelf = self else { return }
-                
-                print("goal %: \(strongSelf.appMgr.goalPercentage)")
-                
-                strongSelf.heartVizView.animateTo(strongSelf.appMgr.goalPercentage)
-            }
+            strongSelf.heartVizView.animateTo(strongSelf.appMgr.goalPercentage)
         }
     }
     

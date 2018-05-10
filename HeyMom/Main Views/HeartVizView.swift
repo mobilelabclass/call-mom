@@ -8,6 +8,9 @@
 
 import UIKit
 
+// Time for heart to complete the stroke animation.
+private let animationDuration = 1.5
+
 class HeartVizView: UIView {
 
     private let shapeLayer = CAShapeLayer()
@@ -64,10 +67,13 @@ class HeartVizView: UIView {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
 
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.duration = CFTimeInterval((1.0 - toValue) * 1.5)
+        animation.duration       = animationDuration
         
+        // Constant speed.
+        // animation.duration = CFTimeInterval((1.0 - toValue) * 1.5)
+            
         animation.fromValue = shapeLayer.presentation()?.strokeEnd
-        animation.toValue = toValue
+        animation.toValue   = toValue
         
         animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = false
