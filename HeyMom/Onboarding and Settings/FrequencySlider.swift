@@ -20,5 +20,4 @@ class FrequencySlider: UISlider {
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: 0, y: 0, width: bounds.width, height: 4)
     }
-
 }

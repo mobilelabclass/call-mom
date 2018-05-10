@@ -10,7 +10,6 @@ import UIKit
 import Contacts
 import UserNotifications
 
-
 class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotificationCenterDelegate {
 
     @IBOutlet weak var callDateLabel: UILabel!
@@ -25,7 +24,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
-
 
     var aToggle = false
     
@@ -74,27 +72,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
             })
         }
 
-        self.heartVizView.shapeLayer.removeAllAnimations()
-        self.heartVizView.shapeLayer.strokeEnd = 1.0
+        heartVizView.resetToFull()
+
 
         //requesting for authorization
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
-            
         })
+
         findContactsWithName(name: "mom")
     }
     
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-//        heartVizView.lineAnimation()
-
-//        self?.heartVizView.reverseAnimation()
-
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.heartVizView.reverseAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
+            self?.heartVizView.animateTo(0.4)
         }
         
 
@@ -113,24 +106,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, UNUserNotif
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        heartVizView.shapeLayer.removeAllAnimations()
-        heartVizView.shapeLayer.strokeEnd = 1.0
+
+        heartVizView.resetToFull()
     }
-    
-
-    /*
-    @IBAction func settingsButton(_ sender: UIButton) {
-//        aToggle = !aToggle
-//
-//        if aToggle {
-//            heartVizView.reverseAnimation()
-//        } else {
-//            heartVizView.lineAnimation()
-//        }
-
-    }
-
- */
   
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {

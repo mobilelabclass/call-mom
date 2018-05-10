@@ -10,14 +10,31 @@ import UIKit
 
 class HeartVizView: UIView {
 
-    let shapeLayer = CAShapeLayer()
+    private let shapeLayer = CAShapeLayer()
+    private let silhouetteLayer = CAShapeLayer()
 
-    let silhouetteLayer = CAShapeLayer()
-
+    private let lineWidth: CGFloat = 30.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        // Silhouette Layer
+        let s = heartPath
+        s.bezierPath.scaleAroundCenter(factor: 0.5)
+        
+        silhouetteLayer.frame = CGRect(x: (bounds.width - s.canvasWidth) / 2.0,
+                                       y: (bounds.height - s.canvasHeight) / 2.0,
+                                       width: s.canvasWidth,
+                                       height: s.canvasHeight)
+        silhouetteLayer.path        = s.bezierPath.cgPath
+        silhouetteLayer.strokeColor = UIColor.magenta.withAlphaComponent(0.2).cgColor
+        silhouetteLayer.fillColor   = UIColor.clear.cgColor
+        silhouetteLayer.lineWidth   = lineWidth
+        silhouetteLayer.lineCap     = kCALineCapRound
+        silhouetteLayer.lineJoin    = kCALineJoinRound
+        layer.addSublayer(silhouetteLayer)
+
+        // Heart Shape Layer
         let h = heartPath
         h.bezierPath.scaleAroundCenter(factor: 0.5)
 
@@ -25,65 +42,32 @@ class HeartVizView: UIView {
                                   y: (bounds.height - h.canvasHeight) / 2.0,
                                   width: h.canvasWidth,
                                   height: h.canvasHeight)
-//        shapeLayer.backgroundColor = UIColor.blue.withAlphaComponent(0.5).cgColor
-        shapeLayer.path = h.bezierPath.cgPath
+        shapeLayer.path        = h.bezierPath.cgPath
         shapeLayer.strokeColor = UIColor.magenta.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 20.0
-        shapeLayer.lineCap = kCALineCapRound
-        shapeLayer.lineJoin = kCALineJoinRound
-
-        let s = heartPath
-        s.bezierPath.scaleAroundCenter(factor: 0.5)
-
-        silhouetteLayer.frame = CGRect(x: (bounds.width - s.canvasWidth) / 2.0,
-                                       y: (bounds.height - s.canvasHeight) / 2.0,
-                                       width: s.canvasWidth,
-                                       height: s.canvasHeight)
-        silhouetteLayer.path = h.bezierPath.cgPath
-        silhouetteLayer.strokeColor = UIColor.magenta.withAlphaComponent(0.2).cgColor
-        silhouetteLayer.fillColor = UIColor.clear.cgColor
-        silhouetteLayer.lineWidth = 20.0
-        silhouetteLayer.lineCap = kCALineCapRound
-        silhouetteLayer.lineJoin = kCALineJoinRound
-
-        layer.addSublayer(silhouetteLayer)
-
+        shapeLayer.fillColor   = UIColor.clear.cgColor
+        shapeLayer.lineWidth   = lineWidth
+        shapeLayer.lineCap     = kCALineCapRound
+        shapeLayer.lineJoin    = kCALineJoinRound
         layer.addSublayer(shapeLayer)
     }
- 
-    func lineAnimation() {
+
+    // Sets heart to full.
+    func resetToFull() {
         shapeLayer.removeAllAnimations()
-
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-//        animation.duration = 1
-
-        animation.fromValue = shapeLayer.presentation()?.strokeEnd
-        animation.toValue = 1.0
-
-        
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-//        animation.fromValue = presentation()?.value(forKey: event)
-//        animation.duration = max(0.1, CATransaction.animationDuration())
-        animation.duration = 0.0
-
-        animation.fillMode = kCAFillModeForwards
-        animation.isRemovedOnCompletion = false
-
-        shapeLayer.add(animation, forKey: "strokeEnd")
+        shapeLayer.strokeEnd = 1.0
     }
 
-    func reverseAnimation() {
+    // Animate heart to percentage full.
+    func animateTo(_ toValue: CGFloat ) {
         shapeLayer.removeAllAnimations()
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
 
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.duration = 1
+        animation.duration = 1.0
         
         animation.fromValue = shapeLayer.presentation()?.strokeEnd
-//        animation.fromValue = 1.0
-        animation.toValue = 0.1
+        animation.toValue = toValue
         
         animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = false
@@ -91,7 +75,6 @@ class HeartVizView: UIView {
         shapeLayer.add(animation, forKey: "strokeEnd")
     }
     
-
     // Using PaintCode to generate path.
     var heartPath: (canvasWidth: CGFloat, canvasHeight: CGFloat, bezierPath: UIBezierPath) {
         let canvasWidth: CGFloat = 500
@@ -113,29 +96,27 @@ class HeartVizView: UIView {
         
         return (canvasWidth, canvasHeight, bezierPath)
     }
-    
+
+    // For debugging.
     var ringPath: UIBezierPath {
         let bezierPath = UIBezierPath()
         let arcCenter = CGPoint(x: 185, y: 110)
         bezierPath.addArc(withCenter: arcCenter, radius: 50.0, startAngle: 0, endAngle: CGFloat(2 * Double.pi), clockwise: true)
         return bezierPath
     }
-    
 }
 
 extension UIBezierPath {
-    func scaleAroundCenter(factor: CGFloat)
-    {
+    func scaleAroundCenter(factor: CGFloat) {
         let beforeCenter = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         
-        // SCALE path by factor
+        // Scale path by factor.
         let scaleTransform = CGAffineTransform(scaleX: factor, y: factor)
         self.apply(scaleTransform)
         
         let afterCenter = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        let diff = CGPoint(
-            x: beforeCenter.x - afterCenter.x,
-            y: beforeCenter.y - afterCenter.y)
+        let diff = CGPoint(x: beforeCenter.x - afterCenter.x,
+                           y: beforeCenter.y - afterCenter.y)
         
         let translateTransform = CGAffineTransform(translationX: diff.x, y: diff.y)
         self.apply(translateTransform)
