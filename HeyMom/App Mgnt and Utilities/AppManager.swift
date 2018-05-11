@@ -72,10 +72,8 @@ class AppManager: NSObject {
     }
     
     var goalPercentage: Float {
-
-        // TODO: Make this to days.
         if let sinceLastCall = self.sinceLastCall {
-            let sinceDiff = max(dayCount - sinceLastCall.minutes, 0)
+            let sinceDiff = max(dayCount - sinceLastCall.days, 0)
 
             return Float(sinceDiff) / Float(dayCount)
         }
