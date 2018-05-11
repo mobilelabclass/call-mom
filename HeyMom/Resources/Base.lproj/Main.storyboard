@@ -761,6 +761,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="frequencyButton" destination="E2V-Jw-QUW" id="vlF-MC-3jz"/>
+                        <outlet property="frequencyLabel" destination="amM-rA-KRN" id="1nc-Cw-qiH"/>
                         <outlet property="momsPhoneNumberLabel" destination="Vnd-LF-n6e" id="Mhx-Xn-Jqr"/>
                         <outlet property="phoneNumberButton" destination="0if-2r-o85" id="RZm-qc-CVR"/>
                     </connections>
@@ -823,7 +824,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="74" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Lg-SC-Lor">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CallLogTableViewCell" id="xXY-Fg-fHL" customClass="CallLogTableViewCell" customModule="HeyMom" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="74"/>
@@ -838,7 +839,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="yhX-1v-x9o"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Riposte-Medium" family="Riposte" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvq-TZ-M8Q">
@@ -847,7 +848,7 @@
                                                 <constraint firstAttribute="height" constant="34" id="g0K-XH-STh"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Riposte-Bold" family="Riposte" pointSize="28"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

@@ -14,7 +14,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var phoneNumberButton: UIButton!
     @IBOutlet weak var frequencyButton: UIButton!
     @IBOutlet weak var momsPhoneNumberLabel: UILabel!
-    
+    @IBOutlet weak var frequencyLabel: UILabel!
+
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
     
@@ -43,7 +44,10 @@ class SettingsViewController: UIViewController {
         
         if let name = appMgr.momContact?.givenName {
             momsPhoneNumberLabel.text = "\(name)'s phone number"
+            
+            frequencyLabel.text = "Remind me to call \(name) every"
         }
+        
     }
     
     @IBAction func handleDoneButton(_ sender: UIButton) {
