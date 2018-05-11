@@ -180,10 +180,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujt-2S-RpK">
-                                <rect key="frame" x="126.66666666666667" y="256" width="160.66666666666663" height="80"/>
+                                <rect key="frame" x="139.66666666666666" y="256" width="134.99999999999997" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ujt-2S-RpK" secondAttribute="height" multiplier="2:1" id="0Z1-c1-7Cz"/>
-                                    <constraint firstAttribute="height" constant="80" id="ugd-hC-dFC"/>
+                                    <constraint firstAttribute="width" secondItem="Ujt-2S-RpK" secondAttribute="height" multiplier="1.5:1" id="0Z1-c1-7Cz"/>
+                                    <constraint firstAttribute="height" constant="90" id="ugd-hC-dFC"/>
                                 </constraints>
                                 <state key="normal" image="LB">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -506,8 +506,8 @@
                                 <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="handleFrequencySlider:" destination="8lz-Fo-Xw2" eventType="valueChanged" id="hvm-4A-oid"/>
-                                    <action selector="handleFrequencySliderDidUpdate:" destination="8lz-Fo-Xw2" eventType="touchUpOutside" id="b35-iL-cE6"/>
-                                    <action selector="handleFrequencySliderDidUpdate:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="wwS-FN-lK1"/>
+                                    <action selector="handleFrequencySliderDidUpdate:" destination="8lz-Fo-Xw2" eventType="touchUpInside" id="LRM-ln-vgg"/>
+                                    <action selector="handleFrequencySliderDidUpdate:" destination="8lz-Fo-Xw2" eventType="touchUpOutside" id="PF4-vB-skq"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6H-hr-KdO">
@@ -887,7 +887,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LB" width="1200" height="600"/>
+        <image name="LB" width="819" height="546"/>
         <image name="arrow_left" width="88" height="44"/>
         <image name="arrow_right" width="88" height="44"/>
         <image name="big_heart" width="32" height="32"/>
