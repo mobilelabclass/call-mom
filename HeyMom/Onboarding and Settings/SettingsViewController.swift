@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var phoneNumberButton: UIButton!
     @IBOutlet weak var frequencyButton: UIButton!
+    @IBOutlet weak var momsPhoneNumberLabel: UILabel!
     
     // Get global singleton object.
     let appMgr = AppManager.sharedInstance
@@ -32,10 +33,17 @@ class SettingsViewController: UIViewController {
         let phone = appMgr.momPhoneNumber
 //        let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: (phone?.label)!)
         
-        phoneNumberButton.setTitle(phone?.value.stringValue, for: .normal)
+        let formattedNumber = phone?.value.stringValue.components(separatedBy: CharacterSet.decimalDigits.inverted)
+            .joined()
+        
+        phoneNumberButton.setTitle(formattedNumber, for: .normal)
         
         let frequencyString = "\(appMgr.dayCount) \(daySuffix)"
         frequencyButton.setTitle(frequencyString, for: .normal)
+        
+        if let name = appMgr.momContact?.givenName {
+            momsPhoneNumberLabel.text = "\(name)'s phone number"
+        }
     }
     
     @IBAction func handleDoneButton(_ sender: UIButton) {

@@ -20,6 +20,10 @@ class NumberUpdateViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchContactsButton: UIButton!
+    
+    @IBOutlet weak var selectFromContactsButton: UIButton!
+    
     var tableData = [CNLabeledValue<CNPhoneNumber>?]()
 
     var selectedRow: Int?
@@ -35,20 +39,39 @@ class NumberUpdateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Button styling
+        selectFromContactsButton.layer.cornerRadius =  selectFromContactsButton.bounds.height / 2.0
+        selectFromContactsButton.clipsToBounds = true
 
         // Buttons user only for onboarding flow.
         if isSettingsMode {
             backButton.isHidden = true
             nextButton.isHidden = true
+            searchContactsButton.isHidden = true
+            selectFromContactsButton.isHidden = false
+            
             titleLabel.text = "Select Mom from your Contacts"
+            
+            // We have mom contact
+            if let contact = appMgr.momContact {
+                if (contact.phoneNumbers.count > 1) {
+                    titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName). Select which one you normally reach her a:"
+                } else {
+                    titleLabel.text = "\(contact.givenName) has one number that you reach her at:"
+                }
+            }
+            
         } else {
             titleLabel.text = "To get started, select Mom from your Contacts"
             nextButton.isEnabled = false
+            searchContactsButton.isHidden = false
+            selectFromContactsButton.isHidden = true
         }
 
         // Show stored phone number
-        if let phoneNumer = appMgr.momPhoneNumber {
-            tableData.append(phoneNumer)
+        if let phoneNumber = appMgr.momPhoneNumber {
+            tableData.append(phoneNumber)
             selectedRow = 0
         }
     }
@@ -64,7 +87,12 @@ class NumberUpdateViewController: UIViewController {
     @IBAction func handleNextButton(_ sender: UIButton) {
         self.didGoNext?()
     }
-
+    @IBAction func handleSelectFromContactsButton(_ sender: UIButton) {
+        let picker = CNContactPickerViewController()
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
+    }
+    
     @IBAction func handleContactsButton(_ sender: UIButton) {
         let picker = CNContactPickerViewController()
         picker.delegate = self
@@ -82,15 +110,22 @@ extension NumberUpdateViewController: CNContactPickerDelegate {
             tableData.append(phoneNumber)
             selectedRow = 0
         }
+        
+        print(contact.givenName, contact)
 
         if tableData.count == 0 {
             titleLabel.text = "Sorry, no number found"
             nextButton.isEnabled = false
         } else {
-            titleLabel.text = "Select Mom from your Contacts"
-
+            titleLabel.text = "Hey \(contact.givenName)! You reach \(contact.givenName) at"
+            appMgr.momContact = contact
             appMgr.momPhoneNumber = tableData[0]
-
+            
+            if (contact.phoneNumbers.count > 1) {
+                titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName), select which one you normally reach her at."
+            }
+            searchContactsButton.isHidden = true
+            selectFromContactsButton.isHidden = false
             nextButton.isEnabled = true
         }
         
@@ -122,14 +157,17 @@ extension NumberUpdateViewController: UITableViewDelegate, UITableViewDataSource
         
         cell.categoryLabel.text  = localizedLabel
         
+        let formattedNumber = number.stringValue.components(separatedBy: CharacterSet.decimalDigits.inverted)
+            .joined()
+        
         if selectedRow == indexPath.row {
-            cell.numberLabel.text    =  "• \(number.stringValue) •"
+            cell.numberLabel.text    =  "\(formattedNumber)"
             cell.categoryLabel.textColor = .black
             cell.numberLabel.textColor = .black
         } else {
-            cell.numberLabel.text    =  number.stringValue
-            cell.categoryLabel.textColor = UIColor.white.withAlphaComponent(0.6)
-            cell.numberLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+            cell.numberLabel.text    =  "\(formattedNumber)"
+            cell.categoryLabel.textColor = UIColor.white.withAlphaComponent(0.25)
+            cell.numberLabel.textColor = UIColor.white.withAlphaComponent(0.25)
         }
         
         return cell
