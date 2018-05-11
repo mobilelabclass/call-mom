@@ -19,7 +19,7 @@ enum CallState {
 
 
 // Mininum call time in seconds to be considered a "Call" to Mom.
-private let minCallTime: Int = 5
+private let minCallTime: Int = 20
 
 // Initial reminder frequency.
 private let initialDayCount: Int = 5
