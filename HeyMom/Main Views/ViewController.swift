@@ -56,17 +56,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
-
-        // Run onboarding flow only when first entering the app.
-        if !appMgr.isOnboardingComplete {
-            startOnboardingFlow()
-        }
-
-
         // Initialize heart visualization and animate.
         resetHeartViz()
         animateHeartViz()
-
 
         // Save current day count.
         currentDayCount = appMgr.dayCount
@@ -81,6 +73,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             self?.animateHeartViz()
         }
 
+        // Run onboarding flow only when first entering the app.
+        if !appMgr.isOnboardingComplete {
+            startOnboardingFlow()
+        }
+        
         // Testing
         findContactsWithName(name: "mom")
     }

@@ -54,13 +54,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey Mom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Off-50-jVe">
-                                <rect key="frame" x="16" y="56" width="382" height="53.666666666666657"/>
+                                <rect key="frame" x="16" y="56" width="382" height="55.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="since last call" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDc-N1-xnk">
-                                <rect key="frame" x="16" y="113.66666666666667" width="382" height="20.000000000000014"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="since last call" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDc-N1-xnk">
+                                <rect key="frame" x="16" y="115.33333333333333" width="382" height="19.999999999999986"/>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRj-GR-VqZ" userLabel="Call List Button">
-                                <rect key="frame" x="20" y="67" width="32" height="32"/>
+                                <rect key="frame" x="20" y="68" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="0ma-r9-vde"/>
                                     <constraint firstAttribute="height" constant="32" id="n2I-4N-gqF"/>
@@ -327,19 +327,19 @@
                                 <rect key="frame" x="41.333333333333343" y="116" width="331.33333333333326" height="521"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ifz-n8-ZNs">
-                                        <rect key="frame" x="0.33333333333334281" y="0.0" width="331.33333333333326" height="39"/>
+                                        <rect key="frame" x="0.33333333333334281" y="0.0" width="331.33333333333326" height="40"/>
                                         <fontDescription key="fontDescription" name="Riposte-Lazer" family="Riposte" pointSize="33"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRK-Rb-aa8" userLabel="Underline">
-                                        <rect key="frame" x="0.33333333333334281" y="39" width="331.33333333333326" height="2"/>
+                                        <rect key="frame" x="0.33333333333334281" y="40" width="331.33333333333326" height="2"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="7ox-fd-8m0"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjm-MT-3bD">
-                                        <rect key="frame" x="204.66666666666663" y="41" width="127" height="30"/>
+                                        <rect key="frame" x="199.66666666666663" y="42" width="132" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="StP-Ir-bjH"/>
                                         </constraints>
@@ -352,7 +352,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OKX-tJ-Bnh">
-                                        <rect key="frame" x="0.33333333333334281" y="91" width="331.33333333333326" height="430"/>
+                                        <rect key="frame" x="0.33333333333334281" y="92" width="331.33333333333326" height="429"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NumberTableViewCell" id="H9P-po-ou1" customClass="NumberTableViewCell" customModule="HeyMom" customModuleProvider="target">
@@ -636,7 +636,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your heart will start to get low when you haven't called Mom." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcP-bF-Qw3">
-                                <rect key="frame" x="20" y="117.66666666666669" width="374" height="115.33333333333331"/>
+                                <rect key="frame" x="20.666666666666657" y="117.66666666666669" width="372.66666666666674" height="115.33333333333331"/>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -659,7 +659,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call Mom from the app to keep your heart full!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plb-w3-z1d">
-                                <rect key="frame" x="20" y="156" width="374" height="77"/>
+                                <rect key="frame" x="20.666666666666657" y="156" width="372.66666666666674" height="77"/>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -668,21 +668,20 @@
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="q6v-Cd-uxI" firstAttribute="centerX" secondItem="NlQ-Uv-Vuy" secondAttribute="centerX" id="3pP-vy-pme"/>
-                            <constraint firstItem="plb-w3-z1d" firstAttribute="leading" secondItem="NlQ-Uv-Vuy" secondAttribute="leading" constant="20" id="84q-YM-d3H"/>
                             <constraint firstItem="OcP-bF-Qw3" firstAttribute="centerX" secondItem="NlQ-Uv-Vuy" secondAttribute="centerX" id="9OW-7j-SvM"/>
+                            <constraint firstItem="plb-w3-z1d" firstAttribute="width" secondItem="VaG-dT-1wf" secondAttribute="width" multiplier="0.9" id="FDJ-Nc-nNu"/>
                             <constraint firstItem="NlQ-Uv-Vuy" firstAttribute="bottom" secondItem="Ber-a3-skb" secondAttribute="bottom" constant="20" id="GbR-3v-P2k"/>
                             <constraint firstItem="q6v-Cd-uxI" firstAttribute="height" secondItem="VaG-dT-1wf" secondAttribute="height" id="HGK-Et-Fwi"/>
+                            <constraint firstItem="plb-w3-z1d" firstAttribute="centerX" secondItem="VaG-dT-1wf" secondAttribute="centerX" id="Hvt-4g-zHv"/>
                             <constraint firstItem="NlQ-Uv-Vuy" firstAttribute="bottom" secondItem="tn0-Ke-RBA" secondAttribute="bottom" constant="20" id="IWc-s2-5lV"/>
                             <constraint firstItem="oat-lP-7Ae" firstAttribute="centerY" secondItem="NlQ-Uv-Vuy" secondAttribute="centerY" multiplier="9/6" id="KAV-1R-062"/>
-                            <constraint firstItem="OcP-bF-Qw3" firstAttribute="leading" secondItem="NlQ-Uv-Vuy" secondAttribute="leading" constant="20" id="KUv-Lt-xvs"/>
                             <constraint firstItem="plb-w3-z1d" firstAttribute="bottom" secondItem="lqv-UH-WPb" secondAttribute="top" constant="-20" id="UD9-Ux-GnT"/>
                             <constraint firstItem="q6v-Cd-uxI" firstAttribute="centerY" secondItem="NlQ-Uv-Vuy" secondAttribute="centerY" id="UXV-ZJ-mF5"/>
                             <constraint firstItem="NlQ-Uv-Vuy" firstAttribute="trailing" secondItem="Ber-a3-skb" secondAttribute="trailing" constant="20" id="fKp-Bz-yYI"/>
+                            <constraint firstItem="OcP-bF-Qw3" firstAttribute="width" secondItem="VaG-dT-1wf" secondAttribute="width" multiplier="0.9" id="hWB-M1-ojh"/>
                             <constraint firstItem="oat-lP-7Ae" firstAttribute="centerX" secondItem="q6v-Cd-uxI" secondAttribute="centerX" id="he1-Gh-wE8"/>
-                            <constraint firstItem="NlQ-Uv-Vuy" firstAttribute="trailing" secondItem="OcP-bF-Qw3" secondAttribute="trailing" constant="20" id="nY1-dw-4wi"/>
                             <constraint firstItem="lqv-UH-WPb" firstAttribute="centerY" secondItem="NlQ-Uv-Vuy" secondAttribute="centerY" id="nlI-P2-0Lh"/>
                             <constraint firstItem="q6v-Cd-uxI" firstAttribute="width" secondItem="VaG-dT-1wf" secondAttribute="width" id="oVf-qb-29j"/>
-                            <constraint firstItem="NlQ-Uv-Vuy" firstAttribute="trailing" secondItem="plb-w3-z1d" secondAttribute="trailing" constant="20" id="pn3-ak-6IO"/>
                             <constraint firstItem="lqv-UH-WPb" firstAttribute="centerX" secondItem="NlQ-Uv-Vuy" secondAttribute="centerX" id="ugd-T6-lcx"/>
                             <constraint firstItem="tn0-Ke-RBA" firstAttribute="leading" secondItem="NlQ-Uv-Vuy" secondAttribute="leading" constant="20" id="yC4-RN-5Fh"/>
                             <constraint firstItem="OcP-bF-Qw3" firstAttribute="bottom" secondItem="lqv-UH-WPb" secondAttribute="top" constant="-20" id="zjm-dB-AdS"/>
