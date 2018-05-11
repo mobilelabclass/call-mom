@@ -137,6 +137,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    // TESTING ONBOARDING FLOW
+    @IBAction func handleOnboarding(_ sender: UIButton) {
+        appMgr.dayCount = 5
+        appMgr.momPhoneNumber = nil
+        startOnboardingFlow()
+    }
+    
     // Make call with button press
     @IBAction func handleCallButton(_ sender: UIButton) {
         if let numberURL = appMgr.momPhoneNumberURL {

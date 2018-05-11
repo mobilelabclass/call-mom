@@ -10,6 +10,7 @@ import UIKit
 
 class NumberTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     
     override func awakeFromNib() {

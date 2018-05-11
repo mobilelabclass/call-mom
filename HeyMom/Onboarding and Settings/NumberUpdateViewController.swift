@@ -13,15 +13,17 @@ private let reuseIdentifier = "NumberTableViewCell"
 
 class NumberUpdateViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
 
-    @IBOutlet weak var numberTextField: UITextField!
-
     @IBOutlet weak var tableView: UITableView!
     
-    var tableData = [String]()
+    var tableData = [CNLabeledValue<CNPhoneNumber>?]()
 
+    var selectedRow: Int?
+    
     var didGoBack: (() -> ())?
     var didGoNext: (() -> ())?
     
@@ -38,12 +40,17 @@ class NumberUpdateViewController: UIViewController {
         if isSettingsMode {
             backButton.isHidden = true
             nextButton.isHidden = true
+            titleLabel.text = "Select Mom from your Contacts"
+        } else {
+            titleLabel.text = "To get started, select Mom from your Contacts"
+            nextButton.isEnabled = false
         }
 
-        let color = UIColor.black.withAlphaComponent(0.45)
-        numberTextField.attributedPlaceholder =
-            NSAttributedString(string: "Mom's Number",
-                               attributes: [NSAttributedStringKey.foregroundColor: color])
+        // Show stored phone number
+        if let phoneNumer = appMgr.momPhoneNumber {
+            tableData.append(phoneNumer)
+            selectedRow = 0
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,30 +75,26 @@ class NumberUpdateViewController: UIViewController {
 
 extension NumberUpdateViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-
-        // Check if valid contact,
-        //
-
-        appMgr.momContact = contact
-
+        tableData.removeAll()
+        selectedRow = nil
         
-        self.tableData.removeAll()
-
-        let givenName = contact.givenName
-        let familyName = contact.familyName
         for phoneNumber in contact.phoneNumbers {
-
-            appMgr.momPhoneNumber = phoneNumber
-
-
-            let number = phoneNumber.value as CNPhoneNumber
-            let label = phoneNumber.label
-            let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label!)
-            print("\(givenName) - \(familyName) - \(localizedLabel) - \(number.stringValue)")
-
-            self.tableData.append(number.stringValue)
-            self.tableView.reloadData()
+            tableData.append(phoneNumber)
+            selectedRow = 0
         }
+
+        if tableData.count == 0 {
+            titleLabel.text = "Sorry, no number found"
+            nextButton.isEnabled = false
+        } else {
+            titleLabel.text = "Select Mom from your Contacts"
+
+            appMgr.momPhoneNumber = tableData[0]
+
+            nextButton.isEnabled = true
+        }
+        
+        tableView.reloadData()
     }
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
@@ -112,17 +115,32 @@ extension NumberUpdateViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NumberTableViewCell
         
-        let string = tableData[indexPath.row]
+        let phoneNumber = tableData[indexPath.row]!
+
+        let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: phoneNumber.label!)
+        let number         = phoneNumber.value as CNPhoneNumber
         
-        cell.numberLabel.text = string
+        cell.categoryLabel.text  = localizedLabel
+        
+        if selectedRow == indexPath.row {
+            cell.numberLabel.text    =  "• \(number.stringValue) •"
+            cell.categoryLabel.textColor = .black
+            cell.numberLabel.textColor = .black
+        } else {
+            cell.numberLabel.text    =  number.stringValue
+            cell.categoryLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+            cell.numberLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+        }
         
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let string = tableData[indexPath.row]
+        selectedRow = indexPath.row
         
-        numberTextField.text = string
+        appMgr.momPhoneNumber = tableData[indexPath.row]
+        
+        tableView.reloadData()
     }
 }
 
