@@ -109,9 +109,9 @@ class FinishSetupViewController: UIViewController {
         feedbackGenerator.selectionChanged()
         
         
-        self.shakeButton(speed: 4.0, onCompletion: { [weak self] (animation, finished) in
-            // self?.state = .step2Finish
-        })
+//        self.shakeButton(speed: 4.0, onCompletion: { [weak self] (animation, finished) in
+//            // self?.state = .step2Finish
+//        })
         
         heartVizDemo.animateTo(1.0, speed: 2.0) { [weak self] in
             self?.state = .step2Finish
