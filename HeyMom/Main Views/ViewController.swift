@@ -78,8 +78,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             startOnboardingFlow()
         }
         
-        // Testing
-        findContactsWithName(name: "mom")
+        print("Mom's given name: \(appMgr.momContact?.givenName)")
+        print("Mom's family name: \(appMgr.momContact?.familyName)")
+
+//        // Testing
+//        findContactsWithName(name: "mom")
     }
     
     override func viewDidAppear(_ animated: Bool) {
