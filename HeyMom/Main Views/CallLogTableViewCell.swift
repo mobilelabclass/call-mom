@@ -9,10 +9,12 @@
 import UIKit
 
 class CallLogTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var heartGraphic: UIImageView!
+    
     @IBOutlet weak var callDateLabel: UILabel!
     @IBOutlet weak var callDurationLabel: UILabel!
-    
+    @IBOutlet weak var callTimeLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
