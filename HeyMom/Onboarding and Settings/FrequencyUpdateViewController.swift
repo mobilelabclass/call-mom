@@ -43,6 +43,8 @@ class FrequencyUpdateViewController: UIViewController {
         if isSettingsMode {
             backButton.isHidden = true
             nextButton.isHidden = true
+        } else {
+            appMgr.setupLocalNotification()
         }
         
         // Get day count from settings.
@@ -66,8 +68,13 @@ class FrequencyUpdateViewController: UIViewController {
 
     // Hooked up to touchUpInside and touchUpOutside.
     @IBAction func handleFrequencySliderDidUpdate(_ sender: UISlider) {
+        if appMgr.dayCount == Int(sender.value) { return }
+
         // Store day count.
         appMgr.dayCount = dayCount
+    
+        // Reset reminder to new frequency.
+        appMgr.resetReminder()
     }
     
     @IBAction func handleFrequencySlider(_ sender: UISlider) {

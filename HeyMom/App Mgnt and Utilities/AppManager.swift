@@ -19,7 +19,7 @@ enum CallState {
 
 
 // Mininum call time in seconds to be considered a "Call" to Mom.
-private let minCallTime: Int = 2
+private let minCallTime: Int = 5
 
 // Initial reminder frequency.
 private let initialDayCount: Int = 5
@@ -66,7 +66,9 @@ class AppManager: NSObject {
     
     // Reminder frequency in days.
     var dayCount: Int = initialDayCount {
-        didSet { defaults.set(dayCount, forKey: dayCountKey) }
+        didSet {
+            defaults.set(dayCount, forKey: dayCountKey)
+        }
     }
     
     var goalPercentage: Float {
@@ -173,42 +175,44 @@ extension AppManager: UNUserNotificationCenterDelegate {
     
     func setupLocalNotification() {
         // Request authorization for local notification.
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge],
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound],
                                                                 completionHandler: { didAllow, error in
         })
 
         UNUserNotificationCenter.current().delegate = self
+
+        resetReminder()
     }
     
-    func testNotification() {
-        //creating the notification content
+    func resetReminder() {
+        let alertSeconds = Double(dayCount * 60)
+
+        addNotification(timeInterval: alertSeconds, repeats: false)
+    }
+    
+    func addNotification(timeInterval: TimeInterval, repeats: Bool) {
+        // Creating the notification content.
         let content = UNMutableNotificationContent()
         
-        //adding title, subtitle, body and badge
-        content.title = "Reminder to call your mom"
-        //        content.subtitle = ""
-        content.body = "It's been 5 days since you called"
+        // Adding title, subtitle, body and badge.
+        content.title = "Reminder"
+        content.body = "Call your Mom today!"
         content.sound = UNNotificationSound.default()
-        content.badge = 0
+        //  content.subtitle = ""
+        //  content.badge = 0
         
-        
-        //        let alertDays = 3
-        //        let daySeconds = 86400
-        //        let alertSeconds = Double(alertDays * daySeconds)
-        
-        
-        //         let alertSeconds = Double(1 * 60)
-        
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: repeats)
         
         //getting the notification request
         let request = UNNotificationRequest(identifier: "HeyMom", content: content, trigger: trigger)
         
+        // Clear out any existing notification.
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
-        //adding the notification to notification center
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        // Adding the notification to notification center.
+        UNUserNotificationCenter.current().add(request) { (error) in
+            print("Notification added with interval: \(timeInterval)")
+        }
     }
 
     // UNUserNotificationCenterDelegate method.
@@ -216,7 +220,7 @@ extension AppManager: UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         // Displaying the ios local notification when app is in foreground.
-        completionHandler([.alert, .badge, .sound])
+        completionHandler([.alert, .sound])
     }
 }
 

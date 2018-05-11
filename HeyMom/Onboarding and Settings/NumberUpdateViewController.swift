@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 import ContactsUI
 
 private let reuseIdentifier = "NumberTableViewCell"
@@ -19,6 +20,10 @@ class NumberUpdateViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
 
     @IBOutlet weak var tableView: UITableView!
+
+    // Contacts framework.
+    var store = CNContactStore()
+    var contacts: [CNContact] = []
     
     @IBOutlet weak var searchContactsButton: UIButton!
     
@@ -75,6 +80,11 @@ class NumberUpdateViewController: UIViewController {
             tableData.append(phoneNumber)
             selectedRow = 0
         }
+
+
+        //        // Testing
+        //        findContactsWithName(name: "mom")
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,6 +108,53 @@ class NumberUpdateViewController: UIViewController {
         let picker = CNContactPickerViewController()
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
+    }
+
+    func findContactsWithName(name: String) {
+        checkAccessStatus(completionHandler: { (accessGranted) -> Void in
+            if accessGranted {
+                DispatchQueue.main.async {
+                    do {
+                        let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: name)
+                        let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
+                        self.contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
+                        if let contact = self.contacts.first {
+                            let givenName = contact.givenName
+                            let familyName = contact.familyName
+                            for phoneNumber in contact.phoneNumbers {
+                                let number = phoneNumber.value as CNPhoneNumber
+                                let label = phoneNumber.label
+                                let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label!)
+                                print("\(givenName) - \(familyName) - \(localizedLabel) - \(number.stringValue)")
+                            }
+                        }
+                    }
+                    catch {
+                        print("Unable to refetch the selected contact.")
+                    }
+                }
+            }
+        })
+    }
+    
+    func checkAccessStatus(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        let authorizationStatus = CNContactStore.authorizationStatus(for: CNEntityType.contacts)
+        
+        switch authorizationStatus {
+        case .authorized:
+            completionHandler(true)
+        case .denied, .notDetermined:
+            self.store.requestAccess(for: CNEntityType.contacts, completionHandler: { (access, accessError) -> Void in
+                if access {
+                    completionHandler(access)
+                }
+                else {
+                    print("access denied")
+                }
+            })
+        default:
+            completionHandler(false)
+        }
     }
 }
 

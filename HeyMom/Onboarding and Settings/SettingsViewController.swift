@@ -30,14 +30,12 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        let contact = appMgr.momContact
         let phone = appMgr.momPhoneNumber
 //        let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: (phone?.label)!)
         
-        let formattedNumber = phone?.value.stringValue.components(separatedBy: CharacterSet.decimalDigits.inverted)
-            .joined()
-        
+        let formattedNumber = phone?.value.stringValue.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         phoneNumberButton.setTitle(formattedNumber, for: .normal)
+//        phoneNumberButton.setTitle(phone?.value.stringValue, for: .normal)
         
         let frequencyString = "\(appMgr.dayCount) \(daySuffix)"
         frequencyButton.setTitle(frequencyString, for: .normal)

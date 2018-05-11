@@ -59,6 +59,11 @@ class HeartVizView: UIView {
         shapeLayer.removeAllAnimations()
         shapeLayer.strokeEnd = 1.0
     }
+    
+    func resetToEmpty() {
+        shapeLayer.removeAllAnimations()
+        shapeLayer.strokeEnd = 0.0
+    }
 
     // Animate heart to percentage full.
     func animateTo(_ toValue: Float) {
