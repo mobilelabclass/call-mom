@@ -123,7 +123,7 @@ extension NumberUpdateViewController: CNContactPickerDelegate {
             appMgr.momPhoneNumber = tableData[0]
             
             if (contact.phoneNumbers.count > 1) {
-                titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName), select which one you normally reach her at:"
+                titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName), select which one you would like to use"
             }
             searchContactsButton.isHidden = true
             selectFromContactsButton.isHidden = false
