@@ -185,7 +185,7 @@ extension AppManager: UNUserNotificationCenterDelegate {
     }
     
     func resetReminder() {
-        let alertSeconds = Double(dayCount * 60)
+        let alertSeconds = Double(dayCount * 86400)
 
         addNotification(timeInterval: alertSeconds, repeats: true)
     }

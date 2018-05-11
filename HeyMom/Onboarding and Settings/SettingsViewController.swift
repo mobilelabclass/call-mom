@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController {
     let appMgr = AppManager.sharedInstance
     
     var daySuffix: String {
-        return (appMgr.dayCount > 1) ? "minutes" : "minute"
+        return (appMgr.dayCount > 1) ? "days" : "day"
     }
     
     override func viewDidLoad() {
@@ -31,11 +31,9 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let phone = appMgr.momPhoneNumber
-//        let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: (phone?.label)!)
-        
+
         let formattedNumber = phone?.value.stringValue.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         phoneNumberButton.setTitle(formattedNumber, for: .normal)
-//        phoneNumberButton.setTitle(phone?.value.stringValue, for: .normal)
         
         let frequencyString = "\(appMgr.dayCount) \(daySuffix)"
         frequencyButton.setTitle(frequencyString, for: .normal)

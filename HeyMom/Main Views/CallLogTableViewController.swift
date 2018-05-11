@@ -29,7 +29,7 @@ class CallLogTableViewController: UITableViewController {
         dateFormatter.pmSymbol   = "PM"
         
         // Setup date formatter.
-       timeFormatter.locale     = Locale(identifier: "en_US_POSIX")
+        timeFormatter.locale     = Locale(identifier: "en_US_POSIX")
         // dateFormatter.dateFormat = "EEEE h:mm a 'on' MMMM dd, yyyy"
         timeFormatter.dateFormat = "h:mm a"
         timeFormatter.amSymbol   = "AM"

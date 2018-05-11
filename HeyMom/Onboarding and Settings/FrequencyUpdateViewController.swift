@@ -26,7 +26,7 @@ class FrequencyUpdateViewController: UIViewController {
         didSet {
             dayCountLabel.text    = String(dayCount)
             frequencySlider.value = Float(dayCount)
-            unitLabel.text        = dayCount > 1 ? "minutes" : "minute"
+            unitLabel.text        = dayCount > 1 ? "days" : "day"
         }
     }
 

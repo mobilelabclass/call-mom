@@ -164,8 +164,23 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func animateHeartViz() {
         if let sinceLastCall = appMgr.sinceLastCall {
-//            print("s:\(sinceLastCall.seconds) m:\(sinceLastCall.minutes) h:\(sinceLastCall.hours) d:\(sinceLastCall.days) ")
-            titleLabel.text = "\(sinceLastCall.minutes) Minutes"
+
+            // Format time for title.
+            var timeSinceLastCall = 0
+            var unitTime = ""
+
+            if sinceLastCall.days > 0 {
+                timeSinceLastCall = sinceLastCall.days
+                unitTime = sinceLastCall.days == 1 ? "Day" : "Days"
+            } else if sinceLastCall.hours > 0 {
+                timeSinceLastCall = sinceLastCall.hours
+                unitTime = sinceLastCall.hours == 1 ? "Hour" : "Hours"
+            } else  {
+                timeSinceLastCall = sinceLastCall.minutes
+                unitTime = sinceLastCall.minutes == 1 ? "Minute" : "Minutes"
+            }
+            
+            titleLabel.text = "\(timeSinceLastCall) \(unitTime)"
             
             subtitleLabel.isHidden = false
             

@@ -169,7 +169,7 @@ extension NumberUpdateViewController: CNContactPickerDelegate {
             selectedRow = 0
         }
         
-        print(contact.givenName, contact)
+        //        print(contact.givenName, contact)
 
         if tableData.count == 0 {
             titleLabel.text = "Sorry, no number found"
