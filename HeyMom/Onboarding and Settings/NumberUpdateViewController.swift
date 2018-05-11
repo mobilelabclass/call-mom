@@ -89,6 +89,7 @@ extension NumberUpdateViewController: CNContactPickerDelegate {
         } else {
             titleLabel.text = "Select Mom from your Contacts"
 
+            appMgr.momContact     = contact
             appMgr.momPhoneNumber = tableData[0]
 
             nextButton.isEnabled = true
