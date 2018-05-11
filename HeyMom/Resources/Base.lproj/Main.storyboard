@@ -173,13 +173,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made with love by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYJ-8k-AoS">
-                                <rect key="frame" x="129.33333333333331" y="602" width="156.33333333333331" height="24"/>
-                                <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave0" translatesAutoresizingMaskIntoConstraints="NO" id="RaW-qZ-OeL">
+                                <rect key="frame" x="0.0" y="322" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RaW-qZ-OeL" secondAttribute="height" multiplier="1:1" id="7hj-jG-esB"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujt-2S-RpK">
-                                <rect key="frame" x="126.66666666666667" y="636" width="160.66666666666663" height="80"/>
+                                <rect key="frame" x="126.66666666666667" y="256" width="160.66666666666663" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ujt-2S-RpK" secondAttribute="height" multiplier="2:1" id="0Z1-c1-7Cz"/>
                                     <constraint firstAttribute="height" constant="80" id="ugd-hC-dFC"/>
@@ -191,13 +192,6 @@
                                     <action selector="handleLBLink:" destination="Deh-dx-adj" eventType="touchUpInside" id="JVT-rf-oz9"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_heart_big" translatesAutoresizingMaskIntoConstraints="NO" id="RaW-qZ-OeL">
-                                <rect key="frame" x="87" y="248" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="56U-o4-5ju"/>
-                                    <constraint firstAttribute="width" constant="240" id="aGq-Cq-NZC"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTS-DY-fWg">
                                 <rect key="frame" x="16" y="36" width="88" height="44"/>
                                 <constraints>
@@ -209,8 +203,8 @@
                                     <action selector="handleCloseButton:" destination="Deh-dx-adj" eventType="touchUpInside" id="Tut-nG-myI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For all the Moms" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iq-2T-7Vc">
-                                <rect key="frame" x="20" y="180" width="374" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made with love for all the Moms by" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iq-2T-7Vc">
+                                <rect key="frame" x="20" y="142.66666666666666" width="374" height="93.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Riposte-Light" family="Riposte" pointSize="40"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -218,19 +212,21 @@
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1iq-2T-7Vc" firstAttribute="leading" secondItem="4P0-Up-8Y3" secondAttribute="leading" constant="20" id="8cN-Vo-0hT"/>
-                            <constraint firstItem="1iq-2T-7Vc" firstAttribute="bottom" secondItem="RaW-qZ-OeL" secondAttribute="top" constant="-20" id="RVB-ld-qkn"/>
-                            <constraint firstItem="RaW-qZ-OeL" firstAttribute="centerY" secondItem="LkE-ra-yxs" secondAttribute="centerY" id="apm-WA-eSa"/>
+                            <constraint firstItem="Ujt-2S-RpK" firstAttribute="top" secondItem="1iq-2T-7Vc" secondAttribute="bottom" constant="20" id="8wZ-cq-5YX"/>
+                            <constraint firstAttribute="bottom" secondItem="RaW-qZ-OeL" secondAttribute="bottom" id="H3d-Nh-sVV"/>
+                            <constraint firstItem="1iq-2T-7Vc" firstAttribute="centerY" secondItem="4P0-Up-8Y3" secondAttribute="centerY" multiplier="3/6" id="HjF-0w-nZd"/>
+                            <constraint firstItem="RaW-qZ-OeL" firstAttribute="width" secondItem="LkE-ra-yxs" secondAttribute="width" id="bBB-pV-ifk"/>
                             <constraint firstItem="RaW-qZ-OeL" firstAttribute="centerX" secondItem="LkE-ra-yxs" secondAttribute="centerX" id="hJx-fF-Qrg"/>
                             <constraint firstItem="YTS-DY-fWg" firstAttribute="top" secondItem="4P0-Up-8Y3" secondAttribute="top" constant="16" id="oGP-vc-Lck"/>
                             <constraint firstItem="Ujt-2S-RpK" firstAttribute="centerX" secondItem="LkE-ra-yxs" secondAttribute="centerX" id="pVB-nN-yLd"/>
                             <constraint firstItem="1iq-2T-7Vc" firstAttribute="trailing" secondItem="4P0-Up-8Y3" secondAttribute="trailing" constant="-20" id="rmw-tY-Mwy"/>
-                            <constraint firstItem="4P0-Up-8Y3" firstAttribute="bottom" secondItem="Ujt-2S-RpK" secondAttribute="bottom" constant="20" id="sgp-pN-LDs"/>
-                            <constraint firstItem="kYJ-8k-AoS" firstAttribute="bottom" secondItem="Ujt-2S-RpK" secondAttribute="top" constant="-10" id="vUn-v5-kmk"/>
-                            <constraint firstItem="kYJ-8k-AoS" firstAttribute="centerX" secondItem="LkE-ra-yxs" secondAttribute="centerX" id="w8b-H7-kJ2"/>
                             <constraint firstItem="YTS-DY-fWg" firstAttribute="leading" secondItem="4P0-Up-8Y3" secondAttribute="leading" constant="16" id="xDI-84-Ogy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4P0-Up-8Y3"/>
                     </view>
+                    <connections>
+                        <outlet property="momImageView" destination="RaW-qZ-OeL" id="mEr-xD-rlA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytq-7T-eBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -894,7 +890,6 @@
         <image name="arrow_left" width="88" height="44"/>
         <image name="arrow_right" width="88" height="44"/>
         <image name="big_heart" width="32" height="32"/>
-        <image name="black_heart_big" width="256" height="256"/>
         <image name="credits" width="44" height="44"/>
         <image name="gear" width="44" height="44"/>
         <image name="grid" width="240" height="240"/>

@@ -55,11 +55,12 @@ class NumberUpdateViewController: UIViewController {
             
             // We have mom contact
             if let contact = appMgr.momContact {
-                if (contact.phoneNumbers.count > 1) {
-                    titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName). Select which one you normally reach her a:"
+                /* if (contact.phoneNumbers.count > 1) {
+                    titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName). Select which one you normally reach her at:"
                 } else {
                     titleLabel.text = "\(contact.givenName) has one number that you reach her at:"
-                }
+                } */
+                titleLabel.text = "\(contact.givenName)'s phone number:"
             }
             
         } else {
@@ -122,7 +123,7 @@ extension NumberUpdateViewController: CNContactPickerDelegate {
             appMgr.momPhoneNumber = tableData[0]
             
             if (contact.phoneNumbers.count > 1) {
-                titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName), select which one you normally reach her at."
+                titleLabel.text = "We found \(contact.phoneNumbers.count) numbers for \(contact.givenName), select which one you normally reach her at:"
             }
             searchContactsButton.isHidden = true
             selectFromContactsButton.isHidden = false
