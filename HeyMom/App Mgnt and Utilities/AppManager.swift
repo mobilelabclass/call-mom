@@ -155,6 +155,11 @@ class AppManager: NSObject {
             
             dayCount = defaults.integer(forKey: dayCountKey)
             
+            // Set to initial value if value gets reset to 0.
+            if dayCount == 0 {
+                dayCount = initialDayCount
+            }
+            
             if let momContactData = defaults.object(forKey: momContactKey) as? Data {
                 momContact = NSKeyedUnarchiver.unarchiveObject(with: momContactData) as? CNContact
             }
@@ -179,6 +184,9 @@ extension AppManager: UNUserNotificationCenterDelegate {
 
         UNUserNotificationCenter.current().delegate = self
 
+        // Set initial day count.
+        dayCount = initialDayCount
+        
         resetReminder()
     }
     
